@@ -1057,20 +1057,24 @@ Gui, Add, Edit, x180 y165 w40 h18 Limit1 vSavedKeybind gUpdateKeybind, %SavedKey
     Gui, Font, s9 cWhite Bold, Segoe UI
     Gui, Add, GroupBox, x23 y50 w475 h340 cD3D3D3, Credits
 
-    Gui, Add, Picture, x40 y70 w48 h48, % A_ScriptDir "\Images\RobloxLogo.png" ; Placeholder for Roblox Logo
+    ; --- YOUR AVATAR PICTURE ---
+    ; Make sure 'May_Avatar.png' is in the 'Images' folder.
+    Gui, Add, Picture, x40 y70 w150 h150, % A_ScriptDir "\Images\May_Avatar.png"
+
+    ; --- ADJUSTED TEXT POSITIONS FOR CLARITY ---
     Gui, Font, s10 cWhite Bold, Segoe UI
-    Gui, Add, Text, x100 y70 w200 h24, May's AutoKey Macro
+    Gui, Add, Text, x200 y70 w250 h24, May's AutoKey Macro
     Gui, Font, s8 cFFC0CB Italic, Segoe UI
-    Gui, Add, Text, x100 y96 w200 h16, Automated Assistance for Grow A Garden
+    Gui, Add, Text, x200 y96 w250 h16, Automated Assistance for Grow A Garden
     Gui, Font, s8 cWhite, Segoe UI
-    Gui, Add, Text, x40 y130 w400 h40, This macro was created by May to help players automate tasks in Grow A Garden.
+    Gui, Add, Text, x40 y230 w450 h40, This macro was created by May to help players automate tasks in Grow A Garden.
 
     Gui, Font, s9 cWhite Bold, Segoe UI
-    Gui, Add, GroupBox, x23 y200 w475 h100 cD3D3D3, Connect with May
+    Gui, Add, GroupBox, x23 y280 w475 h100 cD3D3D3, Connect with May
     Gui, Font, s8 cD3D3D3 Underline, Segoe UI
-    Gui, Add, Link, x40 y220 w300 h16, Join May's Discord: <a href="https://discord.gg/9qtyh5y7qr">https://discord.gg/9qtyh5y7qr</a>
-    Gui, Add, Link, x40 y240 w300 h16, GitHub Page: <a href="https://github.com/YourGitHubUsername/Mays-AutoKey-Macro">Coming Soon</a> ; Update this with your actual GitHub repo link
-    Gui, Add, Link, x40 y260 w300 h16, Latest Macro Tutorial: <a href="https://youtube.com/YourYouTubeChannel">Coming Soon</a>
+    Gui, Add, Link, x40 y300 w450 h16, Join May's Discord: <a href="https://discord.gg/9qtyh5y7qr">https://discord.gg/9qtyh5y7qr</a>
+    Gui, Add, Link, x40 y320 w450 h16, GitHub Page: <a href="https://github.com/MayMayMay112/Mays-Macro-AHK">https://github.com/MayMayMay112/Mays-Macro-AHK</a>
+    Gui, Add, Link, x40 y340 w450 h16, Latest Macro Tutorial: <a href="https://youtube.com/YourYouTubeChannel">Coming Soon</a>
 
 
     Gui, Show, w520 h460, May's AutoKey Macro [SUMMER UPDATE]
@@ -1147,7 +1151,7 @@ UpdateSpeed:
         MsgBox, 0, Disclaimer, % "Macro speed set to " . SavedSpeed . ". Use with caution (Requires a stable FPS rate)."
     }
     else if (SavedSpeed = "Ultra") {
-        MsgBox, 0, Disclaimer, % "Macro speed set to " . SavedSpeed . ". Zero delay on UI Navigation inputs, I wouldn't recommend actually using this it's mostly here for fun."
+        MsgBox, 0, Disclaimer, % "Macro speed set to " . SavedSpeed . ". Use at your own risk, high chance of erroring/breaking (Requires a very stable and high FPS rate)."
     }
     else if (SavedSpeed = "Max") {
         MsgBox, 0, Disclaimer, % "Macro speed set to " . SavedSpeed . ". Zero delay on UI Navigation inputs, I wouldn't recommend actually using this it's mostly here for fun."
@@ -1857,7 +1861,10 @@ AutoReconnect:
 
     global actionQueue
 
-    if (simpleDetect(0x302927, 0, 0.3988, 0.3548, 0.6047, 0.6674) && simpleDetect(0xFFFFFF, 0, 0.3988, 0.3548, 0.6047, 0.6674) && privateServerLink != "") {
+    ; --- FIX APPLIED HERE: UPDATED PIXEL COLORS FOR DISCONNECT SCREEN DETECTION ---
+    ; Now looking for 0x393B3D (dark grey background) and 0xFFFFFF (white text) with a slight variation.
+    ; This should correctly detect the "Disconnected" pop-up on your screen.
+    if (simpleDetect(0x393B3D, 5, 0.3988, 0.3548, 0.6047, 0.6674) && simpleDetect(0xFFFFFF, 5, 0.3988, 0.3548, 0.6047, 0.6674) && privateServerLink != "") {
         started := 0
         actionQueue := []
         SetTimer, AutoReconnect, Off
