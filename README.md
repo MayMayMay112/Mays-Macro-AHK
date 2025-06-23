@@ -12,6 +12,7 @@ Before starting the macro:
 - Set your roblox camera mode to the following --> **default(classic)**
 - put "Recall Wrench" in the **2nd hot bar slot** --> macro may bug out and not automatically do it
 - have at least 5-10 things in your hotbar
+- REMOVE SHIFT-LOCK!
 - make sure UI Navigation is turned **ON** in your Roblox settings
 - unequip your **“grey mouse” pet** if you have some equipped since they give you a speed bonus that will break the macro
 
