@@ -1861,10 +1861,15 @@ AutoReconnect:
 
     global actionQueue
 
-    ; --- FIX APPLIED HERE: UPDATED PIXEL COLORS FOR DISCONNECT SCREEN DETECTION ---
-    ; Now looking for 0x393B3D (dark grey background) and 0xFFFFFF (white text) with a slight variation.
-    ; This should correctly detect the "Disconnected" pop-up on your screen.
-    if (simpleDetect(0x393B3D, 5, 0.3988, 0.3548, 0.6047, 0.6674) && simpleDetect(0xFFFFFF, 5, 0.3988, 0.3548, 0.6047, 0.6674) && privateServerLink != "") {
+    ; --- FIX APPLIED HERE: USING ImageSearch FOR MORE RELIABLE DETECTION ---
+    ; This will search for the 'ReconnectButton.png' image within the Roblox game window.
+    ; Make sure 'ReconnectButton.png' is in your 'Images' subfolder and is a precise screenshot of the button.
+    ; The '*30' parameter allows for a 30% variation in shades, making it more tolerant.
+    WinGetPos, winX, winY, winW, winH, ahk_exe RobloxPlayerBeta.exe
+    ImageSearch, FoundX, FoundY, %winX%, %winY%, %winX% + %winW%, %winY% + %winH%, *30 %A_ScriptDir%\Images\ReconnectButton.png
+
+    ; ErrorLevel 0 means the image was found
+    if (ErrorLevel = 0 && privateServerLink != "") {
         started := 0
         actionQueue := []
         SetTimer, AutoReconnect, Off
@@ -1877,7 +1882,7 @@ AutoReconnect:
         ToolTip, Attempting To Reconnect
         SetTimer, HideTooltip, -5000
         SendDiscordMessage(webhookURL, "Lost connection or macro errored, attempting to reconnect..." . (PingSelected ? " <@" . discordUserID . ">" : ""))
-        sleepAmount(15000, 30000)
+        sleepAmount(15000, 30000) ; Increased sleep to allow more time for game to launch
         SetTimer, CheckLoadingScreen, 5000
     }
 
@@ -1891,10 +1896,13 @@ CheckLoadingScreen:
 
     WinActivate, % "ahk_id" . firstWindow
 
+    ; This checks for a mostly black screen, common during Roblox loading or errors.
+    ; If a black screen is detected, it tries to click in the middle to dismiss potential pop-ups.
     if (simpleDetect(0x000000, 0, 0.75, 0.75, 0.9, 0.9)) {
         SafeClickRelative(midX, midY)
     }
     else {
+        ; If not black, assume reconnected successfully.
         ToolTip, Rejoined Successfully
         sleepAmount(5000, 10000)
         SendDiscordMessage(webhookURL, "Successfully reconnected to server." . (PingSelected ? " <@" . discordUserID . ">" : ""))
