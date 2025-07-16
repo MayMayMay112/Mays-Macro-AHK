@@ -1,13 +1,13 @@
-; May's AutoKey Macro [SUMMER UPDATE]
+; May's GAG Macro [PREMIUM/PAID VERSION]
 
 #SingleInstance, Force
 #NoEnv
 SetWorkingDir %A_ScriptDir%
 #WinActivateForce
-SetMouseDelay, -1
+SetMouseDelay, -1 
 SetWinDelay, -1
 SetControlDelay, -1
-SetBatchLines, -1
+SetBatchLines, -1   
 
 ; globals
 
@@ -45,14 +45,14 @@ global msgBoxCooldown := 0
 
 global gearAutoActive := 0
 global seedAutoActive := 0
-global eggAutoActive := 0
+global eggAutoActive  := 0
 global cosmeticAutoActive := 0
 global honeyShopAutoActive := 0
 global honeyDepositAutoActive := 0
 global collectPollinatedAutoActive := 0
 
-global GAME_PASS_ID := 1244038348
-global VERIFIED_KEY := "VerifiedUser"
+global GAME_PASS_ID  := 1273951938
+global VERIFIED_KEY  := "VerifiedUser"
 
 global actionQueue := []
 
@@ -65,12 +65,12 @@ global currentShop := ""
 global selectedResolution
 
 global scrollCounts_1080p, scrollCounts_1440p_100, scrollCounts_1440p_125
-scrollCounts_1080p := [2, 4, 6, 8, 9, 11, 13, 14, 16, 18, 20, 21, 23, 25, 26, 28, 29, 31]
-scrollCounts_1440p_100 := [3, 5, 8, 10, 13, 15, 17, 20, 22, 24, 27, 30, 31, 34, 36, 38, 40, 42]
-scrollCounts_1440p_125 := [3, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 23, 25, 27, 29, 30, 31, 32]
+scrollCounts_1080p :=       [2, 4, 6, 8, 9, 11, 13, 14, 16, 18, 20, 21, 23, 25, 26, 28, 29, 31]
+scrollCounts_1440p_100 :=   [3, 5, 8, 10, 13, 15, 17, 20, 22, 24, 27, 30, 31, 34, 36, 38, 40, 42]
+scrollCounts_1440p_125 :=   [3, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 23, 25, 27, 29, 30, 31, 32]
 
 global gearScroll_1080p, toolScroll_1440p_100, toolScroll_1440p_125
-gearScroll_1080p := [1, 2, 4, 6, 8, 9, 11, 13]
+gearScroll_1080p     := [1, 2, 4, 6, 8, 9, 11, 13]
 gearScroll_1440p_100 := [2, 3, 6, 8, 10, 13, 15, 17]
 gearScroll_1440p_125 := [1, 3, 4, 6, 8, 9, 12, 12]
 
@@ -206,7 +206,7 @@ showPopupMessage(msgText := "nil", duration := 2000) {
 
 DonateResponder(ctrlName) {
 
-    MsgBox, 1, Disclaimer,
+    MsgBox, 1, Disclaimer, 
     (
     Your browser will open with a link to a roblox gamepass once you press OK.
     - Feel free to check the code, there are no malicious links.
@@ -266,7 +266,7 @@ getMouseCoord(axis) {
         else if (axis = "y")
             return relY
 
-    return "" ; error
+    return ""  ; error
 
 }
 
@@ -288,12 +288,12 @@ uiUniversal(order := 0, exitUi := 1, continuous := 0, spam := 0, spamCount := 30
     if (!continuous) {
         sendKeybind(SavedKeybind)
         Sleep, 50
-    }
+    }  
 
     ; right = 1, left = 2, up = 3, down = 4, enter = 0, manual delay = 5
     if (mode = "universal") {
 
-        Loop, Parse, order
+        Loop, Parse, order 
         {
             if (A_LoopField = "1") {
                 repeatKey("Right", 1)
@@ -303,16 +303,16 @@ uiUniversal(order := 0, exitUi := 1, continuous := 0, spam := 0, spamCount := 30
             }
             else if (A_LoopField = "3") {
                 repeatKey("Up", 1)
-            }
+            }        
             else if (A_LoopField = "4") {
                 repeatKey("Down", 1)
-            }
+            }  
             else if (A_LoopField = "0") {
                 repeatKey("Enter", spam ? spamCount : 1, spam ? 10 : 0)
-            }
+            }       
             else if (A_LoopField = "5") {
                 Sleep, 100
-            }
+            } 
             if (SavedSpeed = "Stable" && A_LoopField != "5") {
                 Sleep, %delayTime%
             }
@@ -380,7 +380,7 @@ buyUniversal(itemType) {
 
     indexArray := []
     lastIndex := 0
-
+    
     ; name array
     arrayName := itemType . "Items"
     currentArray := %arrayName%
@@ -437,7 +437,7 @@ sendKeybind(keybind) {
     if (keybind = "\") {
         Send, \
     } else {
-        Send, {%keybind%}
+        Send, {%keybind%} 
     }
 }
 
@@ -479,12 +479,12 @@ searchItem(search := "nil") {
     }
 
         uiUniversal("1011143333333333333333333311440", 0)
-        Sleep, 50
+        Sleep, 50      
         typeString(search)
         Sleep, 50
 
         if (search = "recall") {
-            uiUniversal("2211550554155055", 1, 1)
+            uiUniversal("22211550554155055", 1, 1)
         }
         else if (search = "pollinated") {
             uiUniversal("22115505544444444444444444444441111111155055", 1, 1)
@@ -599,7 +599,7 @@ getWindowIDS(returnIndex := 0) {
     if (returnIndex) {
         Return windowIDS[returnIndex]
     }
-
+    
 }
 
 closeShop(shop, success) {
@@ -652,15 +652,16 @@ quickDetectEgg(buyColor, variation := 10, x1Ratio := 0.0, y1Ratio := 0.0, x2Rati
     isSelected := 0
 
     eggColorMap := Object()
-    eggColorMap["Common Egg"] := "0xFFFFFF"
-    eggColorMap["Uncommon Egg"] := "0x81A7D3"
-    eggColorMap["Rare Egg"] := "0xBB5421"
+    eggColorMap["Common Egg"]    := "0xFFFFFF"
+    eggColorMap["Uncommon Egg"]  := "0x81A7D3"
+    eggColorMap["Rare Egg"]      := "0xBB5421"
     eggColorMap["Legendary Egg"] := "0x2D78A3"
-    eggColorMap["Mythical Egg"] := "0x00CCFF"
-    eggColorMap["Bug Egg"] := "0x86FFD5"
-    eggColorMap["Common Summer Egg"] := "0x00FFFF"
-    eggColorMap["Rare Summer Egg"] := "0xFBFCA8"
-    eggColorMap["Paradise Egg"] := "0x32CDFF"
+    eggColorMap["Mythical Egg"]  := "0x00CCFF"
+    eggColorMap["Bug Egg"]       := "0x86FFD5"
+    eggColorMap["Common Summer Egg"]  := "0x00FFFF"
+    eggColorMap["Rare Summer Egg"]  := "0xFBFCA8"
+    eggColorMap["Paradise Egg"]  := "0x32CDFF"
+    eggColorMap["Bee Egg"]  := "0x00ACFF"
 
     Loop, 5 {
         for rarity, color in eggColorMap {
@@ -695,7 +696,7 @@ quickDetectEgg(buyColor, variation := 10, x1Ratio := 0.0, y1Ratio := 0.0, x2Rati
                     eggsCompleted = 1
                     break
                 }
-            }
+            }    
         }
         ; failsafe
         if (eggsCompleted) {
@@ -703,7 +704,7 @@ quickDetectEgg(buyColor, variation := 10, x1Ratio := 0.0, y1Ratio := 0.0, x2Rati
         }
         Sleep, 1500
     }
-
+    
     if (!eggsCompleted) {
         uiUniversal(5, 1, 1)
         ToolTip, Error In Detection
@@ -742,14 +743,14 @@ quickDetect(color1, color2, variation := 10, x1Ratio := 0.0, y1Ratio := 0.0, x2R
     eggDetected := 0
 
     global currentItem
-
+    
     ; change to whatever you want to be pinged for
     pingItems := ["Bamboo Seed", "Coconut Seed", "Cactus Seed", "Dragon Fruit Seed", "Mango Seed", "Grape Seed", "Mushroom Seed", "Pepper Seed"
-                 , "Cacao Seed", "Beanstalk Seed"
-                 , "Basic Sprinkler", "Advanced Sprinkler", "Godly Sprinkler", "Lightning Rod", "Master Sprinkler"
-                 , "Rare Egg", "Legendary Egg", "Mythical Egg", "Bug Egg"
-                 , "Flower Seed Pack", "Nectarine Seed", "Hive Fruit Seed", "Honey Sprinkler"
-                 , "Bee Egg", "Bee Crate", "Honey Comb", "Bee Chair", "Honey Torch", "Honey Walkway"]
+                , "Cacao Seed", "Beanstalk Seed"
+                ,  "Godly Sprinkler", "Lightning Rod", "Master Sprinkler"
+                , "Legendary Egg", "Mythical Egg", "Bug Egg"
+                , "Flower Seed Pack", "Nectarine Seed", "Hive Fruit Seed", "Honey Sprinkler"
+                , "Bee Egg", "Bee Crate", "Honey Comb", "Bee Chair", "Honey Torch", "Honey Walkway"]
 
 	ping := false
 
@@ -777,7 +778,7 @@ quickDetect(color1, color2, variation := 10, x1Ratio := 0.0, y1Ratio := 0.0, x2R
             if (ErrorLevel = 0) {
                 stock := 1
                 ToolTip, %currentItem% `nIn Stock
-                SetTimer, HideTooltip, -1500
+                SetTimer, HideTooltip, -1500  
                 uiUniversal(50, 0, 1, 1)
                 Sleep, 50
                 if (ping)
@@ -794,7 +795,7 @@ quickDetect(color1, color2, variation := 10, x1Ratio := 0.0, y1Ratio := 0.0, x2R
         if (ErrorLevel = 0) {
             stock := 1
             ToolTip, %currentItem% `nIn Stock
-            SetTimer, HideTooltip, -1500
+            SetTimer, HideTooltip, -1500  
             uiUniversal(500, 1, 1)
             Sleep, 50
             if (ping)
@@ -804,7 +805,7 @@ quickDetect(color1, color2, variation := 10, x1Ratio := 0.0, y1Ratio := 0.0, x2R
         }
         if (!stock) {
             uiUniversal(1105, 1, 1)
-            SendDiscordMessage(webhookURL, currentItem . " Not In Stock.")
+            SendDiscordMessage(webhookURL, currentItem . " Not In Stock.")  
         }
     }
 
@@ -813,33 +814,34 @@ quickDetect(color1, color2, variation := 10, x1Ratio := 0.0, y1Ratio := 0.0, x2R
     if (!stock) {
         ToolTip, %currentItem% `nNot In Stock
         SetTimer, HideTooltip, -1500
-        ; SendDiscordMessage(webhookURL, currentItem . " Not In Stock.")
+        ; SendDiscordMessage(webhookURL, currentItem . " Not In Stock.")  
     }
 
 }
 
 ; item arrays
 
-seedItems := ["Carrot Seed", "Strawberry Seed", "Blueberry Seed", "Tomato Seed"
-              , "Cauliflower Seed", "Watermelon Seed"
-              , "Green Apple Seed", "Avocado Seed", "Banana Seed", "Pineapple Seed"
-              , "Kiwi Seed", "Bell Pepper Seed", "Prickly Pear Seed", "Loquat Seed"
-              , "Feijoa Seed", "Sugar Apple"]
+seedItems := ["Carrot Seed", "Strawberry Seed", "Blueberry Seed", "Orange Tulip", "Tomato Seed"
+             , "Daffodil Seed", "Watermelon Seed", "Pumpkin Seed", "Apple Seed", "Bamboo Seed"
+             , "Coconut Seed", "Cactus Seed", "Dragon Fruit Seed", "Mango Seed", "Grape Seed"
+             , "Mushroom Seed", "Pepper Seed", "Cacao Seed", "Beanstalk Seed", "Ember Lily"
+             , "Sugar Apple", "Burning Bud", "Giant Pinecone Seed"]
 
-gearItems := ["Watering Can", "Trowel", "Recall Wrench", "Basic Sprinkler", "Advanced Sprinkler"
-              , "Godly Sprinkler", "Tanning Mirror", "Master Sprinkler", "Cleaning Spray", "Favorite Tool", "Harvest Tool", "Friendship Pot"]
-
+gearItems := ["Watering Can", "Trowel", "Recall Wrench", "Basic Sprinkler", "Advanced Sprinkler", "Medium Toy", "Medium Treat"
+             , "Godly Sprinkler", "Magnifying Glass", "Tanning Mirror", "Master Sprinkler", "Cleaning Spray", "Favorite Tool"	
+	     , "Harvest Tool", "Friendship Pot", "Level Up Lolipop"]
+		
 eggItems := ["Common Egg", "Common Summer Egg", "Rare Summer Egg", "Mythical Egg", "Paradise Egg"
-              , "Bug Egg"]
+             , "Bee Egg", "Bug Egg"]
 
 cosmeticItems := ["Cosmetic 1", "Cosmetic 2", "Cosmetic 3", "Cosmetic 4", "Cosmetic 5"
-              , "Cosmetic 6", "Cosmetic 7", "Cosmetic 8", "Cosmetic 9"]
+             , "Cosmetic 6",  "Cosmetic 7", "Cosmetic 8", "Cosmetic 9"]
 
 ; honeyItems := ["Flower Seed Pack", "placeHolder1", "Lavender Seed", "Nectarshade Seed", "Nectarine Seed", "Hive Fruit Seed", "Pollen Rader", "Nectar Staff"
 ;             , "Honey Sprinkler", "Bee Egg", "placeHolder2", "Bee Crate", "placeHolder3", "Honey Comb", "Bee Chair", "Honey Torch", "Honey Walkway"]
 
 ;realHoneyItems := ["Flower Seed Pack", "Lavender Seed", "Nectarshade Seed", "Nectarine Seed", "Hive Fruit Seed", "Pollen Rader", "Nectar Staff"
-;             , "Honey Sprinkler", "Bee Egg", "Bee Crate", "Honey Comb", "Bee Chair", "Honey Torch", "Honey Walkway"]
+;            , "Honey Sprinkler", "Bee Egg", "Bee Crate", "Honey Comb", "Bee Chair", "Honey Torch", "Honey Walkway"]
 
 global craftItems, craftItems2
 craftItems := ["Crafters Seed Pack", "Manuka Flower", "Dandelion"
@@ -852,6 +854,48 @@ craftItems2 := ["Tropical Mist Sprinkler", "Berry Blusher Sprinkler"
     , "Anti Bee Egg", "Pack Bee"]
 
 settingsFile := A_ScriptDir "\settings.ini"
+
+
+fff(username) {
+    global GAME_PASS_ID
+    username := Trim(username)
+
+    reqBody := "{""usernames"":[""" username """],""excludeBannedUsers"":true}"
+    whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+    whr.Open("POST","https://users.roblox.com/v1/usernames/users",false)
+    whr.SetRequestHeader("Content-Type","application/json")
+    whr.Send(reqBody),  whr.WaitForResponse()
+    if (whr.Status!=200 || !RegExMatch(whr.ResponseText,"""id"":\s*(\d+)",m))
+        return 0
+    userId := m1
+
+    ownURL := "https://inventory.roblox.com/v1/users/" userId
+           .  "/items/GamePass/" GAME_PASS_ID
+    whr2 := ComObjCreate("WinHttp.WinHttpRequest.5.1")
+    whr2.Open("GET",ownURL,false), whr2.Send(), whr2.WaitForResponse()
+    if (whr2.Status!=200)                        ; request itself failed
+        return 0
+
+    return !RegExMatch(whr2.ResponseText, """data"":\s*\[\s*\]")
+}
+
+
+IniRead, isVerified, %settingsFile%, Main, %VERIFIED_KEY%, 0
+if (!isVerified) {
+    InputBox, rbUser, Premium Access, Please enter your Roblox username:
+    if (ErrorLevel)
+        ExitApp   ; user cancelled
+
+    if (fff(rbUser)) {
+        IniWrite, 1,              %settingsFile%, Main, %VERIFIED_KEY%
+        IniWrite, %rbUser%,       %settingsFile%, Main, VerifiedUsername
+        MsgBox, 0, Success, Verification successful, Welcome to May's Macro! 
+    } else {
+        MsgBox, 16, Access Denied, Sorry, that account does not own the required game pass.
+        ExitApp
+    }
+}
+
 
 Gosub, ShowGui
 
@@ -872,14 +916,14 @@ ShowGui:
     Gui, Add, Checkbox, % "x50 y90 vSelectAllSeeds gHandleSelectAll c90EE90 " . (SelectAllSeeds ? "Checked" : ""), Select All Seeds
     Loop, % seedItems.Length() {
         IniRead, sVal, %settingsFile%, Seed, Item%A_Index%, 0
-        if (A_Index > 16) {
+        if (A_Index > 18) {
             col := 350
-            idx := A_Index - 16
+            idx := A_Index - 18
             yBase := 125
         }
-        else if (A_Index > 8) {
+        else if (A_Index > 9) {
             col := 200
-            idx := A_Index - 9
+            idx := A_Index - 10
             yBase := 125
         }
         else {
@@ -923,7 +967,7 @@ ShowGui:
         Gui, Add, Checkbox, % "x50 y" y " vEggItem" A_Index " gHandleSelectAll cD3D3D3 " . (eVal ? "Checked" : ""), % eggItems[A_Index]
     }
 
-/*
+    /*
     Gui, Tab, 4
     Gui, Font, s9 ce8ac07 Bold, Segoe UI
     Gui, Add, GroupBox, x23 y50 w475 h340 ce8ac07, Honey
@@ -934,28 +978,30 @@ ShowGui:
 
 
     Gui, Tab, 5
-    Gui, Font, s9 cD3D3D3 Bold, Segoe UI
+    Gui, Font, s9 cBF40BF Bold, Segoe UI
 
-    ; — Crafting Seeds —
-    Gui, Add, GroupBox, x23 y50 w230 h380 cD3D3D3, Crafting Seeds
+    Gui, Add, GroupBox, x23 y50 w230 h380 cBF40BF, Crafting Seeds
+    Gui, Add, Text, x40 y130 w200 h40, Coming soon
+
     IniRead, SelectAllCraft, %settingsFile%, Craft, SelectAllCraft, 0
-    Gui, Add, Checkbox, % "x40 y90 vSelectAllCraft gHandleSelectAll c90EE90 " . (SelectAllCraft ? "Checked" : ""), Select All Seeds
+    Gui, Add, Checkbox, % "x40 y90 vSelectAllCraft gHandleSelectAll cBF40BF " . (SelectAllCraft ? "Checked" : ""), Select All Seeds
     Loop, % craftItems.Length() {
-        IniRead, cVal, %settingsFile%, Craft, Item%A_Index%, 0
+        IniRead, cVal,   %settingsFile%, Craft, Item%A_Index%, 0
         y := 125 + (A_Index - 1) * 25
-        Gui, Add, Checkbox, % "x40 y" y " vCraftItem" A_Index " gHandleSelectAll " . (cVal ? "Checked" : ""), % craftItems[A_Index]
+        Gui, Add, Checkbox, % "x40 y" y " vCraftItem" A_Index " gHandleSelectAll cD3D3D3 " . (cVal ? "Checked" : ""), % craftItems[A_Index]
     }
 
-    ; — Crafting Tools —
-    Gui, Add, GroupBox, x270 y50 w230 h380 cD3D3D3, Crafting Tools
+
+    Gui, Add, GroupBox, x270 y50 w230 h380 cBF40BF, Crafting Tools
+
     IniRead, SelectAllCraft2, %settingsFile%, Craft2, SelectAllCraft2, 0
-    Gui, Add, Checkbox, % "x280 y90 vSelectAllCraft2 gHandleSelectAll c90EE90 " . (SelectAllCraft2 ? "Checked" : ""), Select All Tools
+    Gui, Add, Checkbox, % "x280 y90 vSelectAllCraft2 gHandleSelectAll cBF40BF " . (SelectAllCraft2 ? "Checked" : ""), Select All Tools
     Loop, % craftItems2.Length() {
-        IniRead, c2Val, %settingsFile%, Craft2, Item%A_Index%, 0
+        IniRead, c2Val,  %settingsFile%, Craft2, Item%A_Index%, 0
         y := 125 + (A_Index - 1) * 25
-        Gui, Add, Checkbox, % "x280 y" y " vCraftItem2" A_Index " gHandleSelectAll " . (c2Val ? "Checked" : ""), % craftItems2[A_Index]
+        Gui, Add, Checkbox, % "x280 y" y " vCraftItem2" A_Index " gHandleSelectAll cD3D3D3 " . (c2Val ? "Checked" : ""), % craftItems2[A_Index]
     }
-*/
+    */
 
     Gui, Tab, 4
     Gui, Font, s9 cD41551 Bold, Segoe UI
@@ -970,7 +1016,7 @@ ShowGui:
     ; opt2 := (selectedResolution = 2 ? "Checked" : "")
     ; opt3 := (selectedResolution = 3 ? "Checked" : "")
     ; opt4 := (selectedResolution = 4 ? "Checked" : "")
-
+    
     ;Gui, Add, GroupBox, x30 y200 w260 h110, Resolution
     ; Gui, Add, Text, x50 y220, Resolutions:
     ; IniRead, selectedResolution, %settingsFile%, Main, Resolution, 1
@@ -985,7 +1031,7 @@ ShowGui:
     IniRead, PingSelected, %settingsFile%, Main, PingSelected, 0
     pingColor := PingSelected ? "c90EE90" : "cD3D3D3"
     Gui, Add, Checkbox, % "x50 y225 vPingSelected gUpdateSettingColor " . pingColor . (PingSelected ? " Checked" : ""), Discord Pings
-
+    
     IniRead, AutoAlign, %settingsFile%, Main, AutoAlign, 0
     autoColor := AutoAlign ? "c90EE90" : "cD3D3D3"
     Gui, Add, Checkbox, % "x50 y250 vAutoAlign gUpdateSettingColor " . autoColor . (AutoAlign ? " Checked" : ""), Auto-Align
@@ -1036,7 +1082,7 @@ ShowGui:
 IniRead, SavedKeybind, %settingsFile%, Main, UINavigationKeybind, \
 if (SavedKeybind = "")
 {
-    SavedKeybind := "\"
+    SavedKeybind := "\"   
     IniWrite, %SavedKeybind%, %settingsFile%, Main, UINavigationKeybind
 }
 Gui, Add, Edit, x180 y165 w40 h18 Limit1 vSavedKeybind gUpdateKeybind, %SavedKeybind%
@@ -1057,34 +1103,43 @@ Gui, Add, Edit, x180 y165 w40 h18 Limit1 vSavedKeybind gUpdateKeybind, %SavedKey
     Gui, Font, s9 cWhite Bold, Segoe UI
     Gui, Add, GroupBox, x23 y50 w475 h340 cD3D3D3, Credits
 
-    ; --- YOUR AVATAR PICTURE ---
-    ; Make sure 'May_Avatar.png' is in the 'Images' folder.
-    Gui, Add, Picture, x40 y70 w150 h150, % A_ScriptDir "\Images\May_Avatar.png"
-
-    ; --- ADJUSTED TEXT POSITIONS FOR CLARITY ---
+    Gui, Add, Picture, x40 y70 w48 h48, % mainDir "Images\\May.png"
     Gui, Font, s10 cWhite Bold, Segoe UI
-    Gui, Add, Text, x200 y70 w250 h24, May's AutoKey Macro
+    Gui, Add, Text, x100 y70 w200 h24, May's
     Gui, Font, s8 cFFC0CB Italic, Segoe UI
-    Gui, Add, Text, x200 y96 w250 h16, Automated Assistance for Grow A Garden
+    Gui, Add, Text, x100 y96 w200 h16, Macro Creator
     Gui, Font, s8 cWhite, Segoe UI
-    Gui, Add, Text, x40 y230 w450 h40, This macro was created by May to help players automate tasks in Grow A Garden.
+    Gui, Add, Text, x40 y130 w200 h40, Community Macro/Coder Creator,...
+
+    Gui, Add, Picture, x240 y70 w48 h48, % mainDir "Images\\Ab.png"
+    Gui, Font, s10 cWhite Bold, Segoe UI
+    Gui, Add, Text, x300 y70 w180 h24, Abraham
+    Gui, Font, s8 cWhite, Segoe UI
+    Gui, Add, Text, x300 y96 w180 h40, Greatly helped to modify the macro to make it better and more consistent. And He's not Black!
 
     Gui, Font, s9 cWhite Bold, Segoe UI
-    Gui, Add, GroupBox, x23 y280 w475 h100 cD3D3D3, Connect with May
+    Gui, Add, Text, x40 y274 w200 h20, Extra Resources:
     Gui, Font, s8 cD3D3D3 Underline, Segoe UI
-    Gui, Add, Link, x40 y300 w450 h16, Join May's Discord: <a href="https://discord.gg/9qtyh5y7qr">https://discord.gg/9qtyh5y7qr</a>
-    Gui, Add, Link, x40 y320 w450 h16, GitHub Page: <a href="https://github.com/MayMayMay112/Mays-Macro-AHK">https://github.com/MayMayMay112/Mays-Macro-AHK</a>
-    Gui, Add, Link, x40 y340 w450 h16, Latest Macro Tutorial: <a href="https://youtube.com/YourYouTubeChannel">Coming Soon</a>
-
-
-    Gui, Show, w520 h460, May's AutoKey Macro [SUMMER UPDATE]
+    Gui, Add, Link, x40 y294 w300 h16, Join the <a href="https://discord.gg/KtdJTwAcpy">Discord Server</a>!
+    Gui, Add, Link, x40 y314 w300 h16, Check the <a href="https://github.com/MayMayMay112/Mays-Macro-AHK">Github</a> for the latest macro updates!
+    Gui, Add, Link, x40 y334 w300 h16, Watch the latest macro <a href="COMING-SOON">tutorial</a> on Youtube!
+    ; Gui, Font, s9 cWhite norm, Segoe UI
+    ; Gui, Add, GroupBox, x23 y50 w475 h340 cD7A9E3, Donate
+    ; Gui, Font, s8 cD7A9E3 Bold, Segoe UI
+    ; Gui, Add, Button, x50 y90 w100 h25 gDonate vDonate100 BackgroundF0F0F0, 100 Robux
+    ; Gui, Add, Button, x50 y150 w100 h25 gDonate vDonate500 BackgroundF0F0F0, 500 Robux
+    ; Gui, Add, Button, x50 y210 w100 h25 gDonate vDonate1000 BackgroundF0F0F0, 1000 Robux
+    ; Gui, Add, Button, x50 y270 w100 h25 gDonate vDonate2500 BackgroundF0F0F0, 2500 Robux
+    ; Gui, Add, Button, x50 y330 w100 h25 gDonate vDonate10000 BackgroundF0F0F0, 10000 Robux
+    
+    Gui, Show, w520 h460, May's Premium GAG Macro [PREMIUM/PAID VERSION]
 
 Return
 
 ; ui handlers
 
 DisplayWebhookValidity:
-
+    
     Gui, Submit, NoHide
 
     checkValidity(webhookURL, 1, "webhook")
@@ -1120,9 +1175,9 @@ ClearSaves:
     IniRead, savedUserID, %settingsFile%, Main, DiscordUserID
     IniRead, savedServerLink, %settingsFile%, Main, PrivateServerLink
 
-    GuiControl,, webhookURL, %savedWebhook%
-    GuiControl,, discordUserID, %savedUserID%
-    GuiControl,, privateServerLink, %savedServerLink%
+    GuiControl,, webhookURL, %savedWebhook% 
+    GuiControl,, discordUserID, %savedUserID% 
+    GuiControl,, privateServerLink, %savedServerLink% 
 
     MsgBox, 0, Message, Webhook, User Id, and Private Server Link Cleared
 
@@ -1132,7 +1187,7 @@ UpdateKeybind:
     Gui, Submit, NoHide
 
     if (StrLen(SavedKeybind) != 1)
-        return ; still editing – do nothing yet
+        return          ; still editing – do nothing yet
 
     IniWrite, %SavedKeybind%, %settingsFile%, Main, UINavigationKeybind
     GuiControl,, SavedKeybind, %SavedKeybind%
@@ -1175,18 +1230,18 @@ HandleSelectAll:
     Gui, Submit, NoHide
 
     if (SubStr(A_GuiControl, 1, 9) = "SelectAll") {
-        group := SubStr(A_GuiControl, 10) ; seeds, gears, eggs
+        group := SubStr(A_GuiControl, 10)  ; seeds, gears, eggs
         controlVar := A_GuiControl
         Loop {
             item := group . "Item" . A_Index
-            if (!IsSet(%item%))
+            if (%item% = "")
                 break
             GuiControl,, %item%, % %controlVar%
         }
     }
     else if (RegExMatch(A_GuiControl, "^(Seed|Gear|Egg|Honey)Item\d+$", m)) {
-        group := m1 ; seed, gear, egg
-
+        group := m1  ; seed, gear, egg
+        
         assign := (group = "Seed" || group = "Gear" || group = "Egg") ? "SelectAll" . group . "s" : "SelectAll" . group
 
         if (!%A_GuiControl%)
@@ -1245,7 +1300,7 @@ UpdateSettingColor:
     ; apply colors
     GuiControl, %autoColor%, AutoAlign
     GuiControl, +Redraw, AutoAlign
-
+    
 
     GuiControl, %pingColor%, PingSelected
     GuiControl, +Redraw, PingSelected
@@ -1258,7 +1313,7 @@ return
 Donate:
 
     DonateResponder(A_GuiControl)
-
+    
 Return
 
 HideTooltip:
@@ -1284,8 +1339,8 @@ GetScrollCountRes(index, mode := "seed") {
         arr3 := scrollCounts_1440p_125
     } else if (mode = "gear") {
         arr1 := gearScroll_1080p
-        arr2 := gearCounts_1440p_100
-        arr3 := gearCounts_1440p_125
+        arr2 := gearScroll_1440p_100
+        arr3 := gearScroll_1440p_125
     }
 
     arr := (selectedResolution = 1) ? arr1
@@ -1303,7 +1358,7 @@ GetScrollCountRes(index, mode := "seed") {
 UpdateSelectedItems:
 
     Gui, Submit, NoHide
-
+    
     selectedSeedItems := []
 
     Loop, % seedItems.Length() {
@@ -1340,32 +1395,32 @@ GetSelectedItems() {
     if (selectedSeedItems.Length()) {
         result .= "Seed Items:`n"
         for _, name in selectedSeedItems
-            result .= " - " name "`n"
+            result .= "  - " name "`n"
     }
     if (selectedGearItems.Length()) {
         result .= "Gear Items:`n"
         for _, name in selectedGearItems
-            result .= " - " name "`n"
+            result .= "  - " name "`n"
     }
     if (selectedEggItems.Length()) {
         result .= "Egg Items:`n"
         for _, name in selectedEggItems
-            result .= " - " name "`n"
+            result .= "  - " name "`n"
     }
     if (selectedHoneyItems.Length()) {
         result .= "Honey Items:`n"
         for _, name in selectedHoneyItems
-            result .= " - " name "`n"
+            result .= "  - " name "`n"
     }
 
     return result
-
+    
 }
 
 ; macro starts
 
 StartScanMultiInstance:
-
+    
     Gui, Submit, NoHide
 
     global cycleCount
@@ -1390,13 +1445,7 @@ StartScanMultiInstance:
 
     getWindowIDS()
 
-    if(!windowIDS.MaxIndex()) {
-        MsgBox, 0, Message, No Roblox Window Found
-        Return
-    }
-
     SendDiscordMessage(webhookURL, "Macro started.")
-
 
     if (MultiInstanceMode) {
         MsgBox, 1, Multi-Instance Mode, % "You have " . windowIDS.MaxIndex() . " instances open. (Instance ID's: " . idDisplay . ")`nPress OK to start the macro."
@@ -1438,8 +1487,8 @@ StartScanMultiInstance:
     WinActivate, % "ahk_id " . firstWindow
 
     Gui, Submit, NoHide
-
-    Gosub, UpdateSelectedItems
+        
+    Gosub, UpdateSelectedItems  
     itemsText := GetSelectedItems()
 
     Sleep, 500
@@ -1449,7 +1498,7 @@ StartScanMultiInstance:
     while (started) {
         if (actionQueue.Length()) {
             SetTimer, AutoReconnect, Off
-            ToolTip
+            ToolTip  
             next := actionQueue.RemoveAt(1)
             if (MultiInstanceMode) {
                 for window in windowIDS {
@@ -1502,7 +1551,7 @@ AutoBuySeed:
 
 Return
 
-PushBuySeed:
+PushBuySeed: 
 
     actionQueue.Push("BuySeed")
 
@@ -1526,7 +1575,7 @@ AutoBuyGear:
 
 Return
 
-PushBuyGear:
+PushBuyGear: 
 
     actionQueue.Push("BuyGear")
 
@@ -1550,7 +1599,7 @@ AutoBuyEggShop:
 
 Return
 
-PushBuyEggShop:
+PushBuyEggShop: 
 
     actionQueue.Push("BuyEggShop")
 
@@ -1561,7 +1610,7 @@ BuyEggShop:
     currentSection := "BuyEggShop"
     if (selectedEggItems.Length()) {
         Gosub, EggShopPath
-    }
+    } 
 
 Return
 
@@ -1575,7 +1624,7 @@ AutoBuyCosmeticShop:
 
 Return
 
-PushBuyCosmeticShop:
+PushBuyCosmeticShop: 
 
     actionQueue.Push("BuyCosmeticShop")
 
@@ -1586,13 +1635,13 @@ BuyCosmeticShop:
     currentSection := "BuyCosmeticShop"
     if (BuyAllCosmetics) {
         Gosub, CosmeticShopPath
-    }
+    } 
 
 Return
 
 AutoCollectPollinated:
 
-      ; queues if its not the first cycle, the minute is 0, and the current hour isn't the same as the last hour it was run
+     ; queues if its not the first cycle, the minute is 0, and the current hour isn't the same as the last hour it was run
     if (cycleCount > 0 && currentMinute = 0 && currentHour != lastCollectPollinatedHour) {
         lastHoneyShopHour := currentHour
         SetTimer, PushCollectPollinated, -600000
@@ -1749,7 +1798,7 @@ SetToolTip:
         offsetY := 10
         ToolTip, % tooltipText, % (mX + offsetX), % (mY + offsetY)
     } else {
-        ToolTip ; clears any existing tooltip
+        ToolTip  ; clears any existing tooltip
     }
 
 Return
@@ -1811,16 +1860,16 @@ VerifyUser(username) {
     whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
     whr.Open("POST","https://users.roblox.com/v1/usernames/users",false)
     whr.SetRequestHeader("Content-Type","application/json")
-    whr.Send(reqBody), whr.WaitForResponse()
+    whr.Send(reqBody),  whr.WaitForResponse()
     if (whr.Status!=200 || !RegExMatch(whr.ResponseText,"""id"":\s*(\d+)",m))
         return 0
     userId := m1
 
     ownURL := "https://inventory.roblox.com/v1/users/" userId
-             . "/items/GamePass/" GAME_PASS_ID
+           .  "/items/GamePass/" GAME_PASS_ID
     whr2 := ComObjCreate("WinHttp.WinHttpRequest.5.1")
     whr2.Open("GET",ownURL,false), whr2.Send(), whr2.WaitForResponse()
-    if (whr2.Status!=200) ; request itself failed
+    if (whr2.Status!=200)                        ; request itself failed
         return 0
 
     return !RegExMatch(whr2.ResponseText, """data"":\s*\[\s*\]")
@@ -1831,11 +1880,11 @@ IniRead, isVerified, %settingsFile%, Main, %VERIFIED_KEY%, 0
 if (!isVerified) {
     InputBox, rbUser, Premium Access, Please enter your Roblox username:
     if (ErrorLevel)
-        ExitApp ; user cancelled
+        ExitApp   ; user cancelled
 
     if (VerifyUser(rbUser)) {
-        IniWrite, 1, %settingsFile%, Main, %VERIFIED_KEY%
-        IniWrite, %rbUser%, %settingsFile%, Main, VerifiedUsername
+        IniWrite, 1,              %settingsFile%, Main, %VERIFIED_KEY%
+        IniWrite, %rbUser%,       %settingsFile%, Main, VerifiedUsername
         MsgBox, 0, Success, Verification successful, enjoy the macro!
     } else {
         MsgBox, 16, Access Denied, Sorry, that account does not own the required game-pass.
@@ -1861,15 +1910,7 @@ AutoReconnect:
 
     global actionQueue
 
-    ; --- FIX APPLIED HERE: USING ImageSearch FOR MORE RELIABLE DETECTION ---
-    ; This will search for the 'ReconnectButton.png' image within the Roblox game window.
-    ; Make sure 'ReconnectButton.png' is in your 'Images' subfolder and is a precise screenshot of the button.
-    ; The '*30' parameter allows for a 30% variation in shades, making it more tolerant.
-    WinGetPos, winX, winY, winW, winH, ahk_exe RobloxPlayerBeta.exe
-    ImageSearch, FoundX, FoundY, %winX%, %winY%, %winX% + %winW%, %winY% + %winH%, *30 %A_ScriptDir%\Images\ReconnectButton.png
-
-    ; ErrorLevel 0 means the image was found
-    if (ErrorLevel = 0 && privateServerLink != "") {
+    if (simpleDetect(0x302927, 0, 0.3988, 0.3548, 0.6047, 0.6674) && simpleDetect(0xFFFFFF, 0, 0.3988, 0.3548, 0.6047, 0.6674) && privateServerLink != "") {
         started := 0
         actionQueue := []
         SetTimer, AutoReconnect, Off
@@ -1882,7 +1923,7 @@ AutoReconnect:
         ToolTip, Attempting To Reconnect
         SetTimer, HideTooltip, -5000
         SendDiscordMessage(webhookURL, "Lost connection or macro errored, attempting to reconnect..." . (PingSelected ? " <@" . discordUserID . ">" : ""))
-        sleepAmount(15000, 30000) ; Increased sleep to allow more time for game to launch
+        sleepAmount(15000, 30000)
         SetTimer, CheckLoadingScreen, 5000
     }
 
@@ -1896,13 +1937,10 @@ CheckLoadingScreen:
 
     WinActivate, % "ahk_id" . firstWindow
 
-    ; This checks for a mostly black screen, common during Roblox loading or errors.
-    ; If a black screen is detected, it tries to click in the middle to dismiss potential pop-ups.
     if (simpleDetect(0x000000, 0, 0.75, 0.75, 0.9, 0.9)) {
         SafeClickRelative(midX, midY)
     }
     else {
-        ; If not black, assume reconnected successfully.
         ToolTip, Rejoined Successfully
         sleepAmount(5000, 10000)
         SendDiscordMessage(webhookURL, "Successfully reconnected to server." . (PingSelected ? " <@" . discordUserID . ">" : ""))
@@ -2576,25 +2614,25 @@ SaveSettings:
 
     ; — Egg section —
     Loop, % eggItems.Length()
-        IniWrite, % (EggItem%A_Index% ? 1 : 0), %settingsFile%, Egg, Item%A_Index%
-    IniWrite, % SelectAllEggs, %settingsFile%, Egg, SelectAllEggs
+        IniWrite, % (EggItem%A_Index%    ? 1 : 0), %settingsFile%, Egg, Item%A_Index%
+    IniWrite, % SelectAllEggs,         %settingsFile%, Egg, SelectAllEggs
 
     ; — Gear section —
     Loop, % gearItems.Length()
-        IniWrite, % (GearItem%A_Index% ? 1 : 0), %settingsFile%, Gear, Item%A_Index%
-    IniWrite, % SelectAllGears, %settingsFile%, Gear, SelectAllGears
+        IniWrite, % (GearItem%A_Index%   ? 1 : 0), %settingsFile%, Gear, Item%A_Index%
+    IniWrite, % SelectAllGears,        %settingsFile%, Gear, SelectAllGears
 
     ; — Seed section —
     Loop, % seedItems.Length()
-        IniWrite, % (SeedItem%A_Index% ? 1 : 0), %settingsFile%, Seed, Item%A_Index%
-    IniWrite, % SelectAllSeeds, %settingsFile%, Seed, SelectAllSeeds
+        IniWrite, % (SeedItem%A_Index%   ? 1 : 0), %settingsFile%, Seed, Item%A_Index%
+    IniWrite, % SelectAllSeeds,        %settingsFile%, Seed, SelectAllSeeds
 
     ; — Honey section —
     ; first the “place” items 1–10
     Loop, 10
-        IniWrite, % (HoneyItem%A_Index% ? 1 : 0), %settingsFile%, Honey, Item%A_Index%
-    IniWrite, % SelectAllHoney, %settingsFile%, Honey, SelectAllHoney
-    IniWrite, % AutoHoney, %settingsFile%, Honey, AutoDepositHoney
+        IniWrite, % (HoneyItem%A_Index%  ? 1 : 0), %settingsFile%, Honey, Item%A_Index%
+    IniWrite, % SelectAllHoney,        %settingsFile%, Honey, SelectAllHoney
+    IniWrite, % AutoHoney,             %settingsFile%, Honey, AutoDepositHoney
     ; then 11–14
     Loop, % realHoneyItems.Length()
         if (A_Index > 10 && A_Index <= 14)
@@ -2602,33 +2640,33 @@ SaveSettings:
     IniWrite, % AutoCollectPollinated, %settingsFile%, Honey, AutoCollectPollinated
 
     ; — Main section —
-    IniWrite, % AutoAlign, %settingsFile%, Main, AutoAlign
-    IniWrite, % PingSelected, %settingsFile%, Main, PingSelected
-    IniWrite, % MultiInstanceMode, %settingsFile%, Main, MultiInstanceMode
-    IniWrite, % SavedSpeed, %settingsFile%, Main, MacroSpeed
-    IniWrite, % privateServerLink, %settingsFile%, Main, PrivateServerLink
-    IniWrite, % discordUserID, %settingsFile%, Main, DiscordUserID
-    IniWrite, % SavedKeybind, %settingsFile%, Main, UINavigationKeybind
-    IniWrite, % webhookURL, %settingsFile%, Main, UserWebhook
+    IniWrite, % AutoAlign,             %settingsFile%, Main, AutoAlign
+    IniWrite, % PingSelected,          %settingsFile%, Main, PingSelected
+    IniWrite, % MultiInstanceMode,     %settingsFile%, Main, MultiInstanceMode
+    IniWrite, % SavedSpeed,            %settingsFile%, Main, MacroSpeed
+    IniWrite, % privateServerLink,     %settingsFile%, Main, PrivateServerLink
+    IniWrite, % discordUserID,         %settingsFile%, Main, DiscordUserID
+    IniWrite, % SavedKeybind,          %settingsFile%, Main, UINavigationKeybind
+    IniWrite, % webhookURL,            %settingsFile%, Main, UserWebhook
 
     ; — Cosmetic section —
-    IniWrite, % BuyAllCosmetics, %settingsFile%, Cosmetic, BuyAllCosmetics
+    IniWrite, % BuyAllCosmetics,       %settingsFile%, Cosmetic, BuyAllCosmetics
 
     ; — CraftSeed section —
-    IniWrite, % SelectAllCraft, %settingsFile%, CraftSeed, SelectAllCraftSeed
+    IniWrite, % SelectAllCraft,        %settingsFile%, CraftSeed, SelectAllCraftSeed
 
     ; — CraftTool section —
-    IniWrite, % SelectAllCraft2, %settingsFile%, CraftTool, SelectAllCraftTool
+    IniWrite, % SelectAllCraft2,       %settingsFile%, CraftTool, SelectAllCraftTool
 
     ; — Craft (seeds) section —
     Loop, % craftItems.Length()
         IniWrite, % (CraftItem%A_Index% ? 1 : 0), %settingsFile%, Craft, Item%A_Index%
-    IniWrite, % SelectAllCraft, %settingsFile%, Craft, SelectAllCraft
+    IniWrite, % SelectAllCraft,        %settingsFile%, Craft, SelectAllCraft
 
     ; — Craft2 (tools) section —
     Loop, % craftItems2.Length()
         IniWrite, % (CraftItem2%A_Index%?1:0), %settingsFile%, Craft2, Item%A_Index%
-    IniWrite, % SelectAllCraft2, %settingsFile%, Craft2, SelectAllCraft2
+    IniWrite, % SelectAllCraft2,       %settingsFile%, Craft2, SelectAllCraft2
 
 Return
 
@@ -2653,7 +2691,7 @@ PauseMacro(terminate := 1) {
 
 }
 
-; pressing x on window closes macro
+; pressing x on window closes macro 
 GuiClose:
 
     StopMacro(1)
@@ -2679,7 +2717,7 @@ F7::
 Return
 
 ; f5 starts scan
-F5::
+F5:: 
 
 Gosub, StartScanMultiInstance
 
