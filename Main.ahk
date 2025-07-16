@@ -538,7 +538,7 @@ LoadGuiSettings(*) {
 	
 	
 	myGui.SetFont("s20 cFFFFFF Bold")
-	myGui.Add("Text", "x30 y455", "Join my discord server if you need help")
+	myGui.Add("Text", "x30 y455", "Join my Discord If you Need help :)")
 	
 	; Set visibility of seeds and events to page 1
 	SeedCurrentPage := 2
