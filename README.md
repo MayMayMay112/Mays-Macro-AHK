@@ -72,5 +72,7 @@ Join the Discord: [DISCORD SERVER](https://discord.gg/qFMyhT3xFy)
 
 ---
 
+# MAKE SURE TO SKIP ALL ERROR MESSAGES, ROBLOX AND AHK ARE WEIRD!!! 
+
 # BIGGEST UPDATE NOW OUT!!!
 
