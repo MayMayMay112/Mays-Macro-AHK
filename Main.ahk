@@ -9,14 +9,14 @@ try {
 	FileInstall "images\discordbackground.png", "images\discordbackground.png", 0
 	FileInstall "images\TopDonators.png", "images\TopDonators.png", 0
 	FileInstall "images\youtubebackground.png", "images\youtubebackground.png", 0
-	FileInstall "images\donators\May.png", "images\donators\May.png", 0
+	FileInstall "images\donators\Maf_sinn.png", "images\donators\May.png", 0
 	} catch {
 }
 iniFile := A_ScriptDir . "\settings.ini"  ; This will store settings in settings.ini
 ; === Load settings from ini ===
 LoadData()
 
-versionNumber := "1529F"
+versionNumber := "1529G"
 
 ; === Load GUI ===
 if (MacroState = 1) {
@@ -44,9 +44,9 @@ LoadGuiSettings(*) {
 	myGui.OnEvent("Close", GuiClose)
 	myGui.BackColor := "1F1F1F"
 	myGui.SetFont("s11 cFFFFFF")
-	Tab := GUIObjTab2MainTab := myGui.Add("Tab2", "x10 y10 w550 h530 vMainTab", ["Seeds/Gear", "Eggs", "Events/Crafting", "Donate", "Wait", "Misc Settings", "Info"])
+	Tab := GUIObjTab2MainTab := myGui.Add("Tab2", "x10 y10 w550 h530 vMainTab", ["Seeds", "Eggs/Gear", "Events/Crafting", "Donate", "Wait", "Misc Settings", "Info"])
 	
-	Tab.UseTab("Seeds/Gear")
+	Tab.UseTab("Seeds")
 	
 	; === Hotkeys Section ===
 	myGui.SetFont("s13 cFF4C4C Bold")
@@ -68,7 +68,7 @@ LoadGuiSettings(*) {
 	
 	; === SEEDS -------------- ===
 	myGui.SetFont("s13 cFF4C4C Bold")
-	GUIObjSeedsBox := myGui.Add("GroupBox", "x20 y150 w295 h280 Hidden Center", "Seeds")
+	GUIObjSeedsBox := myGui.Add("GroupBox", "x20 y150 w450 h280 Hidden Center", "Seeds")
 	; === Carrot ===
 	myGui.SetFont("s7 cFFFFFF norm")
 	GUIObjCarrotCheck := myGui.Add("Checkbox", "x30 y180 vCarrotCheck Hidden Checked" . Carrot, "Carrot Seed")
@@ -136,77 +136,53 @@ LoadGuiSettings(*) {
 	GUIObjGiantPineconeCheck := myGui.Add("Checkbox", "x190 y400 vGiantPineconeCheck Hidden Checked" . GiantPinecone, "GiantPinecone Seed")
 	
 	; === Cauliflower ===
-	GUIObjCauliflowerCheck := myGui.Add("Checkbox", "x30 y260 Hidden vCauliflowerCheck Checked" . Cauliflower, "Cauliflower Seed")
+	GUIObjCauliflowerCheck := myGui.Add("Checkbox", "x350 y180 Hidden vCauliflowerCheck Checked" . Cauliflower, "Cauliflower Seed")
 	
 	; === Rafflesia ===
-	GUIObjRafflesiaCheck := myGui.Add("Checkbox", "x30 y300 Hidden vRafflesiaCheck Checked" . Rafflesia, "Rafflesia Seed")
+	GUIObjRafflesiaCheck := myGui.Add("Checkbox", "x350 y200 Hidden vRafflesiaCheck Checked" . Rafflesia, "Rafflesia Seed")
 	
 	; === Greem Apple ===
-	GUIObjGreenAppleCheck := myGui.Add("Checkbox", "x30 y320 Hidden vGreenAppleCheck Checked" . GreenApple, "GreenApple Seed")
+	GUIObjGreenAppleCheck := myGui.Add("Checkbox", "x350 y220 Hidden vGreenAppleCheck Checked" . GreenApple, "GreenApple Seed")
 	
 	; === Avocado ===
-	GUIObjAvocadoCheck := myGui.Add("Checkbox", "x30 y340 Hidden vAvocadoCheck Checked" . Avocado, "Avocado Seed")
+	GUIObjAvocadoCheck := myGui.Add("Checkbox", "x350 y240 Hidden vAvocadoCheck Checked" . Avocado, "Avocado Seed")
 	
 	; === Banana ===
-	GUIObjBananaCheck := myGui.Add("Checkbox", "x30 y360 Hidden vBananaCheck Checked" . Banana, "Banana Seed")
+	GUIObjBananaCheck := myGui.Add("Checkbox", "x350 y260 Hidden vBananaCheck Checked" . Banana, "Banana Seed")
 	
 	; === Pineapple ===
-	GUIObjPineappleCheck := myGui.Add("Checkbox", "x30 y380 Hidden vPineappleCheck Checked" . Pineapple, "Pineapple Seed")
+	GUIObjPineappleCheck := myGui.Add("Checkbox", "x350 y280 Hidden vPineappleCheck Checked" . Pineapple, "Pineapple Seed")
 	
 	; === Kiwi ===
-	GUIObjKiwiCheck := myGui.Add("Checkbox", "x30 y400 Hidden vKiwiCheck Checked" . Kiwi, "Kiwi Seed")
+	GUIObjKiwiCheck := myGui.Add("Checkbox", "x350 y300 Hidden vKiwiCheck Checked" . Kiwi, "Kiwi Seed")
 	
 	
 	; === Bell Pepper ===
-	GUIObjBellPepperCheck := myGui.Add("Checkbox", "x190 y180 Hidden vBellPepperCheck Checked" . BellPepper, "BellPepper Seed")
+	GUIObjBellPepperCheck := myGui.Add("Checkbox", "x350 y320 Hidden vBellPepperCheck Checked" . BellPepper, "BellPepper Seed")
 	
 	; === Prickly Pear ===
-	GUIObjPricklyPearCheck := myGui.Add("Checkbox", "x190 y200 Hidden vPricklyPearCheck Checked" . PricklyPear, "PricklyPear Seed")
+	GUIObjPricklyPearCheck := myGui.Add("Checkbox", "x350 y340 Hidden vPricklyPearCheck Checked" . PricklyPear, "PricklyPear Seed")
 	
 	; === Loquat ===
-	GUIObjLoquatCheck := myGui.Add("Checkbox", "x190 y220 Hidden vLoquatCheck Checked" . Loquat, "Loquat Seed")
+	GUIObjLoquatCheck := myGui.Add("Checkbox", "x350 y360 Hidden vLoquatCheck Checked" . Loquat, "Loquat Seed")
 	
 	; === Feijoa ===
-	GUIObjFeijoaCheck := myGui.Add("Checkbox", "x190 y240 Hidden vFeijoaCheck Checked" . Feijoa, "Feijoa Seed")
+	GUIObjFeijoaCheck := myGui.Add("Checkbox", "x350 y380 Hidden vFeijoaCheck Checked" . Feijoa, "Feijoa Seed")
 	
 	; === Pitcher ===
-	GUIObjPitcherCheck := myGui.Add("Checkbox", "x190 y260 Hidden vPitcherCheck Checked" . Pitcher, "Pitcher Seed")
-	
-	
-	; === GEARS -------------- ===
-	myGui.SetFont("s13 cFF4C4C Bold")
-	GUIObjGearsBox := myGui.Add("GroupBox", "x330 y150 w195 h280 Hidden Center", "Gears")
-	
-	; === Gear Checkboxes ===
-	myGui.SetFont("s7 cFFFFFF norm")
-	GUIObjWateringCheck := myGui.Add("Checkbox", "x340 y180 vWateringCheck Checked" . Watering, "Watering")
-	GUIObjTrowelCheck := myGui.Add("Checkbox", "x340 y200 vTrowelCheck Checked" . Trowel, "Trowel")
-	GUIObjRecallCheck := myGui.Add("Checkbox", "x340 y220 vRecallCheck Checked" . Recall, "Recall")
-	GUIObjBasicCheck := myGui.Add("Checkbox", "x340 y240 vBasicCheck Checked" . Basic, "Basic")
-	GUIObjAdvancedCheck := myGui.Add("Checkbox", "x340 y260 vAdvancedCheck Checked" . Advanced, "Advanced")
-	GUIObjMediumToyCheck := myGui.Add("Checkbox", "x340 y280 vMediumToyCheck Checked" . MediumToy, "MediumToy")
-	GUIObjMediumTreatCheck := myGui.Add("Checkbox", "x340 y300 vMediumTreatCheck Checked" . MediumTreat, "MediumTreat")
-	GUIObjGodlyCheck := myGui.Add("Checkbox", "x340 y320 vGodlyCheck Checked" . Godly, "Godly")
-	GUIObjMagnifyCheck := myGui.Add("Checkbox", "x340 y340 vMagnifyCheck Checked" . Magnify, "Magnify")
-	GUIObjMirrorCheck := myGui.Add("Checkbox", "x340 y360 Hidden vMirrorCheck Checked" . Mirror, "Mirror")
-	GUIObjMasterCheck := myGui.Add("Checkbox", "x340 y380 vMasterCheck Checked" . Master, "Master")
-	GUIObjCleansingCheck := myGui.Add("Checkbox", "x340 y400 vCleansingCheck Checked" . Cleansing, "Cleansing")
-	GUIObjFavoriteCheck := myGui.Add("Checkbox", "x430 y180 vFavoriteCheck Checked" . Favorite, "Favorite")
-	GUIObjHarvestCheck := myGui.Add("Checkbox", "x430 y200 vHarvestCheck Checked" . Harvest, "Harvest")
-	GUIObjFriendshipCheck := myGui.Add("Checkbox", "x430 y220 vFriendshipCheck Checked" . Friendship, "Friendship")
-	GUIObjLevelupLollyCheck := myGui.Add("Checkbox", "x430 y240 vLevelupLollyCheck Checked" . LevelupLolly, "Levelup Lolly")
+	GUIObjPitcherCheck := myGui.Add("Checkbox", "x350 y400 Hidden vPitcherCheck Checked" . Pitcher, "Pitcher Seed")
 	
 	
 	; === TRAVELING MERCHANTS ===
 	GUIObjSkyActiveCheck := myGui.Add("Checkbox", "x30 y180 vSkyActiveCheck Hidden Checked" . SkyActive, "Sky shop")
-	GUIObjSkyOpt1Check := myGui.Add("Checkbox", "x30 y200 vSkyOpt1Check Hidden Checked" . SkyOpt1, "Slot 1: Night Staff")
-	GUIObjSkyOpt2Check := myGui.Add("Checkbox", "x30 y220 vSkyOpt2Check Hidden Checked" . SkyOpt2, "Slot 2: Starcaller/Cloudtouched spray")
+	GUIObjSkyOpt1Check := myGui.Add("Checkbox", "x30 y200 vSkyOpt1Check Hidden Checked" . SkyOpt1, "Slot 1: Starcaller")
+	GUIObjSkyOpt2Check := myGui.Add("Checkbox", "x30 y220 vSkyOpt2Check Hidden Checked" . SkyOpt2, "Slot 2: Night Staff")
 	GUIObjSkyOpt3Check := myGui.Add("Checkbox", "x30 y240 vSkyOpt3Check Hidden Checked" . SkyOpt3, "Slot 3: Cloudtouched spray")
 	GUIObjSummerTravelActiveCheck := myGui.Add("Checkbox", "x30 y260 vSummerTravelActiveCheck Hidden Checked" . SummerTravelActive, "Summer shop, configure in seeds tab")
 	GUIObjGnomeActiveCheck := myGui.Add("Checkbox", "x290 y180 vGnomeActiveCheck Hidden Checked" . GnomeActive, "Gnome Shop")
 	GUIObjGnomeOpt1Check := myGui.Add("Checkbox", "x290 y200 vGnomeOpt1Check Hidden Checked" . GnomeOpt1, "Slot 1: Common Gnome")
 	GUIObjGnomeOpt2Check := myGui.Add("Checkbox", "x290 y220 vGnomeOpt2Check Hidden Checked" . GnomeOpt2, "Slot 2: Farmer Gnome")
-	GUIObjGnomeOpt3Check := myGui.Add("Checkbox", "x290 y240 vGnomeOpt3Check Hidden Checked" . GnomeOpt3, "Slot 3: Classic Gnome/Iconic Gnome")
+	GUIObjGnomeOpt3Check := myGui.Add("Checkbox", "x290 y240 vGnomeOpt3Check Hidden Checked" . GnomeOpt3, "Slot 3: Classic Gnome")
 	GUIObjGnomeOpt4Check := myGui.Add("Checkbox", "x290 y260 vGnomeOpt4Check Hidden Checked" . GnomeOpt4, "Slot 4: Iconic Gnome")
 	GUIObjHoneyActiveCheck := myGui.Add("Checkbox", "x290 y300 vHoneyActiveCheck Hidden Checked" . HoneyActive, "Honey Shop")
 	GUIObjTravelFlowerSeedCheck := myGui.Add("Checkbox", "x290 y320 vTravelFlowerSeedCheck Hidden Checked" . TravelFlowerSeed, "Flower Seed")
@@ -229,10 +205,6 @@ LoadGuiSettings(*) {
 	GUIObjButtonSave.OnEvent("Click", SaveSettings)
 	GUIObjButtonLoad := myGui.Add("Button", "x290 y480 w220 h50  Background5865F2", "Open Macro")
 	GUIObjButtonLoad.OnEvent("Click", LoadMacro)
-	GUIObjButtonLeftSeed := myGui.Add("Button", "x22 y500 w30 h30  Background5865F2", "←")
-	GUIObjButtonLeftSeed.OnEvent("Click", PageChange.Bind(0, "Seed"))
-	GUIObjButtonRightSeed := myGui.Add("Button", "x518 y500 w30 h30  Background5865F2", "→")
-	GUIObjButtonRightSeed.OnEvent("Click", PageChange.Bind(1, "Seed"))
 	
 	GUIObjSeedsCheck := myGui.Add("Checkbox", "x190 y430 vSeedsCheck Checked" . SeedsValue, "Seeds")
 	GUIObjGearsCheck := myGui.Add("Checkbox", "x310 y430 vGearsCheck Checked" . GearsValue, "Gears")
@@ -255,7 +227,7 @@ LoadGuiSettings(*) {
 	GUIObjCraftBOption.Text := CraftTargetB
 	GUIObjCraftInstantCheck := myGui.Add("Checkbox", "x30 y140 Hidden vCraftInstantCheck Checked" . CraftInstant, "Craft on first cycle. Warning, may cause robux popups!`nIf disabled, it waits a full craft time.")
 	GUIObjCraftInfoText := myGui.Add("Text", "x30 y200 Hidden", "Put stackable items in slot 3, 4, 5 for event, 6, 7, 8 for normal. `nDon't skip slots, it only checks 2 slots for a craft that needs 2 stackables.`nNon-stackable items will be found with searching.`nRemove favorited items in advance.`nRemove dragon peppers if crafting Tropical Sprinklers")
-	GUIObjMakeHoney := myGui.Add("Checkbox", "x30 y320 Hidden vMakeHoneyCheck Checked" . MakeHoney, "Convert Pollinated fruit into honey.")
+	GUIObjMakeHoneyCheck := myGui.Add("Checkbox", "x30 y320 Hidden vMakeHoneyCheck Checked" . MakeHoney, "Convert Pollinated fruit into honey.")
 	myGui.SetFont("s13 c884488 Bold")
 	GUIObjCraftBox := myGui.Add("GroupBox", "x20 y50 w525 h440 Hidden Center", "Crafting")
 	myGui.SetFont("s13 cFF4C4C Bold")
@@ -270,14 +242,27 @@ LoadGuiSettings(*) {
 	myGui.SetFont("s13 c4600A4 Bold")
 	GUIObjPrehistBox := myGui.Add("GroupBox", "x290 y50 w255 h440 Hidden Center", "Dino Items")
 	
+	myGui.SetFont("s13 cFFFFFF Bold")
+	GUIObjZenBox := myGui.Add("GroupBox", "x20 y50 w255 h440 Hidden Center", "Zen Items")
+	
 	myGui.SetFont("s9 cFFFFFF norm")
 	GUIObjForceNightCheck := myGui.Add("Checkbox", "x20 y40 Hidden vForceNightCheck Checked" . ForceNight, "Force Moon shop")
 	GUIObjForceBeeCheck := myGui.Add("Checkbox", "x390 y40 Hidden vForceBeeCheck Checked" . ForceBee, "Force Bee shop")
 	GUIObjForceSummerCheck := myGui.Add("Checkbox", "x20 y40 Hidden vForceSummerCheck Checked" . ForceSummer, "Force Summer shop")
 	GUIObjForcePrehistCheck:= myGui.Add("Checkbox", "x390 y40 Hidden vForcePrehistCheck Checked" . ForcePrehist, "Force Prehistoric shop")
+	GUIObjForceZenCheck := myGui.Add("Checkbox", "x20 y40 Hidden vForceZenCheck Checked" . ForceZen, "Force Zen shop")
 	
 	GUIObjIgnoreWeatherCheck := myGui.Add("Checkbox", "x195 y40 vIgnoreWeatherCheck Checked" . IgnoreWeather, "Ignore Weather Requirement")
 	
+	
+	GUIObjZenEventShop := map()
+	PosX := 40
+	PosY := 80
+	For k, ItemName in ZenList {
+		TempNameSpaceless := StrReplace(ItemName," ")
+		GUIObjZenEventShop[ItemName] := myGui.Add("Checkbox", "x" . PosX . " y" . PosY . " Hidden v" . TempNameSpaceless . "Check Checked" . %TempNameSpaceless%, ItemName)
+		PosY += 30
+	}
 	GUIObjPrehistShopCheck := myGui.Add("Checkbox", "x310 y80 Hidden vPrehistShopCheck Checked" . PrehistShop, "Buy Prehist Shop")
 	GUIObjPrehistCraftOption := myGui.Add("DropDownList", "x310 y110 vPrehistCraftOption  Hidden Choose1", ["None", "Amber Spray", "Ancient Seed", "Dino Crate", "Archaeologist Crate", "Dino Egg", "Primal Egg"])
 	GUIObjPrehistCraftOption.text := PrehistCraft
@@ -327,69 +312,95 @@ LoadGuiSettings(*) {
 	GUIObjBeeChairCheck := myGui.Add("Checkbox", "x310 y320 Hidden vBeeChairCheck Checked" . BeeChair, "Bee Chair")
 	GUIObjHoneyTorchCheck := myGui.Add("Checkbox", "x310 y340 Hidden vHoneyTorchCheck Checked" . HoneyTorch, "Honey Torch")
 	GUIObjHoneyWalkwayCheck := myGui.Add("Checkbox", "x310 y360 Hidden vHoneyWalkwayCheck Checked" . HoneyWalkway, "Honey Walkway")
-	GUIObjCraftSeedPackModeCheck := myGui.Add("Checkbox", "x310 y400 Hidden vCraftSeedPackModeCheck Checked" . CraftSeedPackMode, "Craft Seed Packs, uses slot 8 for flower seed pack")
-	GUIObjSellHoneyCheck := myGui.Add("Checkbox", "x310 y420 w220 Hidden vSellHoneyCheck Checked" . SellHoney, "Turn Pollinated plants in slot 1, 2-0 into honey.")
-	GUIObjAltHoneyCheck := myGui.Add("Checkbox", "x310 y460 w220 Hidden vAltHoneyCheck Checked" . AltHoney, "Search inventory for pollinated instead.")
 	
-	Tab.UseTab("Eggs")
+	Tab.UseTab("Eggs/Gear")
 	; === Eggs -------------- ===
 	myGui.SetFont("s13 cFF4C4C Bold")
-	myGui.Add("GroupBox", "x20 y50 w295 h370 Center", "Eggs")
+	myGui.Add("GroupBox", "x20 y50 w250 h270 Center", "Eggs")
 	myGui.SetFont("s13 cFFFFFF norm")
-	GUIObjBuyAllEggsCheck := myGui.Add("Checkbox", "x110 y80 vBuyAllEggsCheck Checked" . BuyAllEggsValue, "Buy Eggs")
-	GUIObjCommonEggCheck := myGui.Add("Checkbox", "x110 y100 vCommonEggCheck Checked" . CommonEgg, "Common Eggs")
-	GUIObjUncommonEggCheck := myGui.Add("Checkbox", "x110 y120 vUncommonEggCheck Checked" . UncommonEgg, "Uncommon Eggs")
-	GUIObjRareEggCheck := myGui.Add("Checkbox", "x110 y140 vRareEggCheck Checked" . RareEgg, "Rare Eggs")
-	GUIObjLegEggCheck := myGui.Add("Checkbox", "x110 y160 vLegEggCheck Checked" . LegEgg, "Legendary Eggs")
-	GUIObjMythEggCheck := myGui.Add("Checkbox", "x110 y180 vMythEggCheck Checked" . MythEgg, "Mythical Eggs")
-	GUIObjBugEggCheck := myGui.Add("Checkbox", "x110 y200 vBugEggCheck Checked" . BugEgg, "Bug Eggs")
-	GUIObjSummerCommonEggCheck := myGui.Add("Checkbox", "x110 y220 vSummerCommonEggCheck Checked" . SummerCommonEgg, "Summer Common Eggs")
-	GUIObjSummerRareEggCheck := myGui.Add("Checkbox", "x110 y240 vSummerRareEggCheck Checked" . SummerRareEgg, "Summer Rare Eggs")
-	GUIObjParadiseEggCheck := myGui.Add("Checkbox", "x110 y260 vParadiseEggCheck Checked" . ParadiseEgg, "Paradise Eggs")
-	GUIObjBeeEggEggCheck := myGui.Add("Checkbox", "x110 y280 vBeeEggEggCheck Checked" . BeeEggEgg, "Bee Eggs")
+	GUIObjBuyAllEggsCheck := myGui.Add("Checkbox", "x50 y80 vBuyAllEggsCheck Checked" . BuyAllEggsValue, "Buy Eggs")
+	GUIObjCommonEggCheck := myGui.Add("Checkbox", "x50 y100 vCommonEggCheck Checked" . CommonEgg, "Common Eggs")
+	GUIObjUncommonEggCheck := myGui.Add("Checkbox", "x50 y120 vUncommonEggCheck Checked" . UncommonEgg, "Uncommon Eggs")
+	GUIObjRareEggCheck := myGui.Add("Checkbox", "x50 y140 vRareEggCheck Checked" . RareEgg, "Rare Eggs")
+	GUIObjLegEggCheck := myGui.Add("Checkbox", "x50 y160 vLegEggCheck Checked" . LegEgg, "Legendary Eggs")
+	GUIObjMythEggCheck := myGui.Add("Checkbox", "x50 y180 vMythEggCheck Checked" . MythEgg, "Mythical Eggs")
+	GUIObjBugEggCheck := myGui.Add("Checkbox", "x50 y200 vBugEggCheck Checked" . BugEgg, "Bug Eggs")
+	GUIObjSummerCommonEggCheck := myGui.Add("Checkbox", "x50 y220 vSummerCommonEggCheck Checked" . SummerCommonEgg, "Summer Common Eggs")
+	GUIObjSummerRareEggCheck := myGui.Add("Checkbox", "x50 y240 vSummerRareEggCheck Checked" . SummerRareEgg, "Summer Rare Eggs")
+	GUIObjParadiseEggCheck := myGui.Add("Checkbox", "x50 y260 vParadiseEggCheck Checked" . ParadiseEgg, "Paradise Eggs")
+	GUIObjBeeEggEggCheck := myGui.Add("Checkbox", "x50 y280 vBeeEggEggCheck Checked" . BeeEggEgg, "Bee Eggs")
 	
+	
+	; === GEARS -------------- ===
+	myGui.SetFont("s13 cFF4C4C Bold")
+	GUIObjGearsBox := myGui.Add("GroupBox", "x300 y50 w195 h280 Hidden Center", "Gears")
+	
+	; === GEARS -------------- ===
+	myGui.SetFont("s13 cFF4C4C Bold")
+	GUIObjGearsBox := myGui.Add("GroupBox", "x300 y50 w195 h280 Hidden Center", "Gears")
+	
+	; === Gear Checkboxes ===
+	myGui.SetFont("s7 cFFFFFF norm")
+	GUIObjWateringCheck := myGui.Add("Checkbox", "x310 y80 vWateringCheck Checked" . Watering, "Watering")
+	GUIObjTrowelCheck := myGui.Add("Checkbox", "x310 y100 vTrowelCheck Checked" . Trowel, "Trowel")
+	GUIObjRecallCheck := myGui.Add("Checkbox", "x310 y120 vRecallCheck Checked" . Recall, "Recall")
+	GUIObjBasicCheck := myGui.Add("Checkbox", "x310 y140 vBasicCheck Checked" . Basic, "Basic")
+	GUIObjAdvancedCheck := myGui.Add("Checkbox", "x310 y160 vAdvancedCheck Checked" . Advanced, "Advanced")
+	GUIObjMediumToyCheck := myGui.Add("Checkbox", "x310 y180 vMediumToyCheck Checked" . MediumToy, "MediumToy")
+	GUIObjMediumTreatCheck := myGui.Add("Checkbox", "x310 y200 vMediumTreatCheck Checked" . MediumTreat, "MediumTreat")
+	GUIObjGodlyCheck := myGui.Add("Checkbox", "x310 y220 vGodlyCheck Checked" . Godly, "Godly")
+	GUIObjMagnifyCheck := myGui.Add("Checkbox", "x310 y240 vMagnifyCheck Checked" . Magnify, "Magnify")
+	GUIObjMirrorCheck := myGui.Add("Checkbox", "x310 y260 vMirrorCheck Checked" . Mirror, "Mirror")
+	GUIObjMasterCheck := myGui.Add("Checkbox", "x310 y280 vMasterCheck Checked" . Master, "Master")
+	GUIObjCleansingCheck := myGui.Add("Checkbox", "x310 y300 vCleansingCheck Checked" . Cleansing, "Cleansing")
+	GUIObjFavoriteCheck := myGui.Add("Checkbox", "x400 y80 vFavoriteCheck Checked" . Favorite, "Favorite")
+	GUIObjHarvestCheck := myGui.Add("Checkbox", "x400 y100 vHarvestCheck Checked" . Harvest, "Harvest")
+	GUIObjFriendshipCheck := myGui.Add("Checkbox", "x400 y120 vFriendshipCheck Checked" . Friendship, "Friendship")
+	GUIObjLevelupLollyCheck := myGui.Add("Checkbox", "x400 y140 vLevelupLollyCheck Checked" . LevelupLolly, "Levelup Lolly")
 	
 	; --- Donate Tab ---
 	Tab.UseTab("Donate")
 	myGui.SetFont("s13 cWhite", "Bold")
 	
 	; First Row
-	GUIObjButton100Robux := myGui.Add("Button", "x50  y50 w110 h30", "0")
+	GUIObjButton100Robux := myGui.Add("Button", "x50  y50 w110 h30", "100 Robux")
 	GUIObjButton100Robux.OnEvent("Click", Donate100)
-	GUIObjButton250Robux := myGui.Add("Button", "x170 y50 w110 h30", "")
+	GUIObjButton250Robux := myGui.Add("Button", "x170 y50 w110 h30", "250 Robux")
 	GUIObjButton250Robux.OnEvent("Click", Donate250)
-	GUIObjButton500Robux := myGui.Add("Button", "x290 y50 w110 h30", "")
+	GUIObjButton500Robux := myGui.Add("Button", "x290 y50 w110 h30", "500 Robux")
 	GUIObjButton500Robux.OnEvent("Click", Donate500)
-	GUIObjButton1000Robux := myGui.Add("Button", "x410 y50 w110 h30", "")
+	GUIObjButton1000Robux := myGui.Add("Button", "x410 y50 w110 h30", "1000 Robux")
 	GUIObjButton1000Robux.OnEvent("Click", Donate1000)
 	
 	; Second Row
-	GUIObjButton2500Robux := myGui.Add("Button", "x110 y90 w110 h30", "")
+	GUIObjButton2500Robux := myGui.Add("Button", "x110 y90 w110 h30", "2500 Robux")
 	GUIObjButton2500Robux.OnEvent("Click", Donate2500)
-	GUIObjButton5000Robux := myGui.Add("Button", "x230 y90 w110 h30", "")
+	GUIObjButton5000Robux := myGui.Add("Button", "x230 y90 w110 h30", "5000 Robux")
 	GUIObjButton5000Robux.OnEvent("Click", Donate5000)
-	GUIObjButton10000Robux := myGui.Add("Button", "x350 y90 w110 h30", "")
+	GUIObjButton10000Robux := myGui.Add("Button", "x350 y90 w110 h30", "10000 Robux")
 	GUIObjButton10000Robux.OnEvent("Click", Donate10000)
 	
 	myGui.SetFont("s15 cWhite", "Bold")
 	myGui.Add("Text", "x80 y130 w460 +Center", "Top Donators:")
 	
 	; Row 1
+	GUIObjA_ScriptDirDonatorOne := myGui.Add("Pic", "x100 y168 w32 h32", A_ScriptDir . "\images\donators\kcavgs.png"), DonatorOne := GUIObjA_ScriptDirDonatorOne.hwnd
 	myGui.SetFont("s9 cWhite", "Segoe UI")
-	GUIObjA_ScriptDirDonatorOne := myGui.Add("Pic", "x100 y168 w32 h32", A_ScriptDir . "\images\donators\May.png"), DonatorOne := GUIObjA_ScriptDirDonatorOne.hwnd
 	myGui.Add("Picture", "x150 y168 w32 h32")
-	myGui.Add("Text", "x190 y180 w220 h32", "Maf_sinn")
-	myGui.Add("Text", "x330 y180 w80  h32 +Right", "100")
+	myGui.Add("Text", "x190 y180 w220 h32", "kcavgs")
+	myGui.Add("Text", "x330 y180 w80  h32 +Right", "750")
 	
 	; Row 2
+	GUIObjA_ScriptDirDonatorTwo := myGui.Add("Pic", "x100 y212 w32 h32", A_ScriptDir . "\images\donators\Maf_sinn.png"), DonatorTwo := GUIObjA_ScriptDirDonatorTwo.hwnd
 	myGui.Add("Picture", "x150 y212 w32 h32")
-	myGui.Add("Text", "x190 y220 w220 h32", "Na")
-	myGui.Add("Text", "x330 y220 w80  h32 +Right", "0")
+	myGui.Add("Text", "x190 y220 w220 h32", "Maf_sinn")
+	myGui.Add("Text", "x330 y220 w80  h32 +Right", "100")
 	
 	; Row 3
+	GUIObjA_ScriptDirDonatorThree := myGui.Add("Pic", "x100 y252 w32 h32", A_ScriptDir . "\images\donators\XolkooTH.png"), DonatorThree := GUIObjA_ScriptDirDonatorThree.hwnd
 	myGui.Add("Picture", "x150 y252 w32 h32")
-	myGui.Add("Text", "x190 y260 w220 h32", "Na")
-	myGui.Add("Text", "x330 y260 w80  h32 +Right", "0")
+	myGui.Add("Text", "x190 y260 w220 h32", "XolkooTH")
+	myGui.Add("Text", "x330 y260 w80  h32 +Right", "100")
 	
 	; Row 4
 	myGui.Add("Picture", "x150 y292 w32 h32")
@@ -459,6 +470,7 @@ LoadGuiSettings(*) {
 	GUIObjWrenchSlotEdit := myGui.Add("Edit", "x268 y210 Hidden vWrenchSlotEdit Number w60 c000000", WrenchSlot)
 	GUIObjFailCountLimitText := myGui.Add("Text", "x30 y240 Hidden", "Max Failures")
 	GUIObjFailCountLimitEdit := myGui.Add("Edit", "vFailCountLimitEdit Hidden w60 c000000", FailCountLimit)
+	GUIObjClassicShopInitCheck := myGui.Add("Checkbox", "x30 y290 Hidden vClassicShopInitCheck Checked" . ClassicShopInit, "Original shop calibration")
 	;advanced
 	GUIObjIgnoreErrorsCheck := myGui.Add("Checkbox", "x30 y80 Hidden vIgnoreErrorsCheck Checked" . IgnoreErrors, "Ignore errors related to detecting shops. Use at own risk!")
 	GUIObjMovementFactorText := myGui.Add("Text", "x30 y110 Hidden", "Movement change. 1 increases walk distance by 1%, -1 decreases walk distance by 1%.`nAccepts decimals (such as 1.5).")
@@ -473,9 +485,9 @@ LoadGuiSettings(*) {
 	myGui.SetFont("s10 cFFFFFF Bold")
 	myGui.Add("GroupBox", "x20 y50 w530 h100", "Credits,")
 	myGui.SetFont("s13 cFFFFFF Bold")
-	myGui.Add("Text", "x30 y75", "Created By: MayMay112")
+	myGui.Add("Text", "x30 y75", "Created By: MayMay")
 	myGui.SetFont("s8 cFFFFFF Bold")
-	myGui.Add("Text", "x30 y100", "With Help From Jimmy & Abraham")
+	myGui.Add("Text", "x30 y100", "with help from Jimmy & Abab")
 	myGui.SetFont("s11 cFFFFFF Bold")
 	myGui.Add("Text", "x35 y115", "If you need any help, join my Discord ---->")
 	
@@ -500,7 +512,7 @@ LoadGuiSettings(*) {
 	
 	; Main text (white foreground)
 	myGui.SetFont("s13 cFFFFFF bold")
-	GUIObjTextOpenYouTube := myGui.Add("Text", "x350 y73 w120 h30 Center BackgroundTrans", "COMING SOON")
+	GUIObjTextOpenYouTube := myGui.Add("Text", "x350 y73 w120 h30 Center BackgroundTrans", "Open YouTube")
 	GUIObjTextOpenYouTube.OnEvent("Click", OpenWebsite)
 	
 	; === Discord Button with Stroke Text ===
@@ -533,12 +545,12 @@ LoadGuiSettings(*) {
 	myGui.SetFont("s12 cFFFFFF")
 	myGui.Add("Text", "x45 y70", "Alter Wait Time by (in seconds):")
 	myGui.Add("Text", "x285 y85", "Default is -1")
-	GUIObjEditTimerAdjustmentInput := myGui.Add("Edit", "x110 y95 w100 vTimerAdjustmentInputEdit c000000", TimerAdjustment)
+	GUIObjEditTimerAdjustmentInputEdit := myGui.Add("Edit", "x110 y95 w100 vTimerAdjustmentInputEdit c000000", TimerAdjustment)
 	GUIObjEditTimerAdjustmentUD := myGui.Add("UpDown", "vTimerAdjustmentInput Range-300-10000", TimerAdjustment)
 	
 	
 	myGui.SetFont("s20 cFFFFFF Bold")
-	myGui.Add("Text", "x30 y455", "Join my Discord If you Need help :)")
+	myGui.Add("Text", "x30 y455", "Join my discord server if you need help")
 	
 	; Set visibility of seeds and events to page 1
 	SeedCurrentPage := 2
@@ -573,367 +585,31 @@ SaveSettings(*)
 {
 	global
 	oSaved := myGui.Submit("0")
-	MainTab := oSaved.MainTab
-	StartKeyEdit := oSaved.StartKeyEdit
-	StopKeyEdit := oSaved.StopKeyEdit
-	ResetKeyEdit := oSaved.ResetKeyEdit
-	SettingsKeyEdit := oSaved.SettingsKeyEdit
-	ReverseOrderCheck := oSaved.ReverseOrderCheck
-	CarrotCheck := oSaved.CarrotCheck
-	StrawberryCheck := oSaved.StrawberryCheck
-	BlueberryCheck := oSaved.BlueberryCheck
-	OrangeCheck := oSaved.OrangeCheck
-	TomatoCheck := oSaved.TomatoCheck
-	CornCheck := oSaved.CornCheck
-	DaffodilCheck := oSaved.DaffodilCheck
-	WatermelonCheck := oSaved.WatermelonCheck
-	PumpkinCheck := oSaved.PumpkinCheck
-	AppleCheck := oSaved.AppleCheck
-	BambooCheck := oSaved.BambooCheck
-	CoconutCheck := oSaved.CoconutCheck
-	CactusCheck := oSaved.CactusCheck
-	DragonCheck := oSaved.DragonCheck
-	MangoCheck := oSaved.MangoCheck
-	GrapeCheck := oSaved.GrapeCheck
-	MushroomCheck := oSaved.MushroomCheck
-	PepperCheck := oSaved.PepperCheck
-	CacaoCheck := oSaved.CacaoCheck
-	BeanstalkCheck := oSaved.BeanstalkCheck
-	EmberLilyCheck := oSaved.EmberLilyCheck
-	SugarAppleCheck := oSaved.SugarAppleCheck
-	BurningBudCheck := oSaved.BurningBudCheck
-	GiantPineconeCheck := oSaved.GiantPineconeCheck
-	CauliflowerCheck := oSaved.CauliflowerCheck
-	RafflesiaCheck := oSaved.RafflesiaCheck
-	GreenAppleCheck := oSaved.GreenAppleCheck
-	AvocadoCheck := oSaved.AvocadoCheck
-	BananaCheck := oSaved.BananaCheck
-	PineappleCheck := oSaved.PineappleCheck
-	KiwiCheck := oSaved.KiwiCheck
-	BellPepperCheck := oSaved.BellPepperCheck
-	PricklyPearCheck := oSaved.PricklyPearCheck
-	LoquatCheck := oSaved.LoquatCheck
-	FeijoaCheck := oSaved.FeijoaCheck
-	PitcherCheck := oSaved.PitcherCheck
-	WateringCheck := oSaved.WateringCheck
-	TrowelCheck := oSaved.TrowelCheck
-	RecallCheck := oSaved.RecallCheck
-	BasicCheck := oSaved.BasicCheck
-	AdvancedCheck := oSaved.AdvancedCheck
-	GodlyCheck := oSaved.GodlyCheck
-	MagnifyCheck := oSaved.MagnifyCheck
-	MirrorCheck := oSaved.MirrorCheck
-	MasterCheck := oSaved.MasterCheck
-	CleansingCheck := oSaved.CleansingCheck
-	FavoriteCheck := oSaved.FavoriteCheck
-	HarvestCheck := oSaved.HarvestCheck
-	FriendshipCheck := oSaved.FriendshipCheck
-	LevelupLollyCheck := oSaved.LevelupLollyCheck
-	MediumToyCheck := oSaved.MediumToyCheck
-	MediumTreatCheck := oSaved.MediumTreatCheck
-	SeedsCheck := oSaved.SeedsCheck
-	GearsCheck := oSaved.GearsCheck
-	
-	SummerTravelActiveCheck := oSaved.SummerTravelActiveCheck
-	SkyActiveCheck := oSaved.SkyActiveCheck
-	SkyOpt1Check := oSaved.SkyOpt1Check
-	SkyOpt2Check := oSaved.SkyOpt2Check
-	SkyOpt3Check := oSaved.SkyOpt3Check
-	GnomeActiveCheck := oSaved.GnomeActiveCheck
-	GnomeOpt1Check := oSaved.GnomeOpt1Check
-	GnomeOpt2Check := oSaved.GnomeOpt2Check
-	GnomeOpt3Check := oSaved.GnomeOpt3Check
-	GnomeOpt4Check := oSaved.GnomeOpt4Check
-	HoneyActiveCheck := oSaved.HoneyActiveCheck
-	TravelFlowerSeedCheck := oSaved.TravelFlowerSeedCheck
-	TravelHoneySprinklerCheck := oSaved.TravelHoneySprinklerCheck
-	TravelBeeEggCheck := oSaved.TravelBeeEggCheck
-	TravelHoneyCrateCheck := oSaved.TravelHoneyCrateCheck
-	TravelCrafterCrateCheck := oSaved.TravelCrafterCrateCheck
-	CraftAOption := oSaved.CraftAOption
-	CraftBOption := oSaved.CraftBOption
-	CraftInstantCheck := oSaved.CraftInstantCheck
-	MakeHoney := oSaved.MakeHoneyCheck
-	ForceNightCheck := oSaved.ForceNightCheck
-	ForceBeeCheck := oSaved.ForceBeeCheck
-	ForceSummerCheck := oSaved.ForceSummerCheck
-	ForcePrehistCheck := oSaved.ForcePrehistCheck
-	IgnoreWeatherCheck := oSaved.IgnoreWeatherCheck
-	
-	PrehistShopCheck := oSaved.PrehistShopCheck
-	PrehistCraftOption := oSaved.PrehistCraftOption
-	DinoEggCheck := oSaved.DinoEggCheck
-	DinoPetEdit := oSaved.DinoPetEdit
-	PrehistInstantCraftCheck := oSaved.PrehistInstantCraftCheck
+	SaveData := map()
+	for VarName, VarVal in oSaved.OwnProps() {
+		SaveData[VarName] := VarVal
+	}
+	; === COMPLEX ===
 	
 	
-	SummerShopCheck := oSaved.SummerShopCheck
-	SummerSeedCheck := oSaved.SummerSeedCheck
-	DelphiniumCheck := oSaved.DelphiniumCheck
-	LilyValleyCheck := oSaved.LilyValleyCheck
-	TravelerCheck := oSaved.TravelerCheck
-	SprayBurntCheck := oSaved.SprayBurntCheck
-	OasisCrateCheck := oSaved.OasisCrateCheck
-	OasisEggCheck := oSaved.OasisEggCheck
-	HamsterCheck := oSaved.HamsterCheck
-	TwibloodCheck := oSaved.TwibloodCheck
-	BloodCrateCheck := oSaved.BloodCrateCheck
-	TwilightCrateCheck := oSaved.TwilightCrateCheck
-	NightEggCheck := oSaved.NightEggCheck
-	NightSeedCheck := oSaved.NightSeedCheck
-	StarCallerCheck := oSaved.StarCallerCheck
-	MoonMelonCheck := oSaved.MoonMelonCheck
-	BloodBananaCheck := oSaved.BloodBananaCheck
-	MoonMangoCheck := oSaved.MoonMangoCheck
-	CelestiberryCheck := oSaved.CelestiberryCheck
-	MoonCatCheck := oSaved.MoonCatCheck
-	BloodHedgeCheck := oSaved.BloodHedgeCheck
-	BloodKiwiCheck := oSaved.BloodKiwiCheck
-	BloodOwlCheck := oSaved.BloodOwlCheck
-	BeeShopCheck := oSaved.BeeShopCheck
-	FlowerSeedCheck := oSaved.FlowerSeedCheck
-	LavenderCheck := oSaved.LavenderCheck
-	NectarshadeCheck := oSaved.NectarshadeCheck
-	NectarineCheck := oSaved.NectarineCheck
-	HiveFruitCheck := oSaved.HiveFruitCheck
-	PollenGunCheck := oSaved.PollenGunCheck
-	NectarStaffCheck := oSaved.NectarStaffCheck
-	HoneySprinklerCheck := oSaved.HoneySprinklerCheck
-	BeeEggCheck := oSaved.BeeEggCheck
-	BeeCrateCheck := oSaved.BeeCrateCheck
-	HoneyCombCheck := oSaved.HoneyCombCheck
-	BeeChairCheck := oSaved.BeeChairCheck
-	HoneyTorchCheck := oSaved.HoneyTorchCheck
-	HoneyWalkwayCheck := oSaved.HoneyWalkwayCheck
-	CraftSeedPackMode := oSaved.CraftSeedPackModeCheck
-	SellHoneyCheck := oSaved.SellHoneyCheck
-	AltHoneyCheck := oSaved.AltHoneyCheck
-	BuyAllEggsCheck := oSaved.BuyAllEggsCheck
-	CommonEggCheck := oSaved.CommonEggCheck
-	UncommonEggCheck := oSaved.UncommonEggCheck
-	RareEggCheck := oSaved.RareEggCheck
-	LegEggCheck := oSaved.LegEggCheck
-	MythEggCheck := oSaved.MythEggCheck
-	BugEggCheck := oSaved.BugEggCheck
-	BeeEggEggCheck := oSaved.BeeEggEggCheck
-	ParadiseEggCheck := oSaved.ParadiseEggCheck
-	SummerCommonEggCheck := oSaved.SummerCommonEggCheck
-	SummerRareEggCheck := oSaved.SummerRareEggCheck
-	InventoryKeyEdit := oSaved.InventoryKeyEdit
-	BuyCapEdit := oSaved.BuyCapEdit
-	KeyDelayEdit := oSaved.KeyDelayEdit
-	MouseDelayEdit := oSaved.MouseDelayEdit
-	GlobalDelayEdit := oSaved.GlobalDelayEdit
-	AutoAlignCheck := oSaved.AutoAlignCheck
-	AutoAlignRecalEdit := oSaved.AutoAlignRecalEdit
-	ZoomLevelEdit := oSaved.ZoomLevelEdit
-	FailCountLimitEdit := oSaved.FailCountLimitEdit
-	WrenchActiveCheck := oSaved.WrenchActiveCheck
-	WrenchSlotEdit := oSaved.WrenchSlotEdit
-	UIInitModeCheck := oSaved.UIInitModeCheck
-	MovementFactorEdit := oSaved.MovementFactorEdit
-	InterfaceButtonEdit := oSaved.InterfaceButtonEdit
-	TimerAdjustmentInput := oSaved.TimerAdjustmentInput
-	AltBuyCheck := oSaved.AltBuyCheck
-	SlowModeCheck := oSaved.SlowModeCheck
-	IgnoreErrorsCheck := oSaved.IgnoreErrorsCheck
-	DebugModeCheck := oSaved.DebugModeCheck
-	
-	; === SETTINGS ===
-	IniWrite(StartKeyEdit, iniFile, "Settings", "startKey")
-	IniWrite(ResetKeyEdit, iniFile, "Settings", "resetKey")
-	IniWrite(StopKeyEdit, iniFile, "Settings", "stopKey")
-	IniWrite(SettingsKeyEdit, iniFile, "Settings", "settingsKey")
-	IniWrite(InventoryKeyEdit, iniFile, "Settings", "InventoryKey")
-	IniWrite(ReverseOrderCheck, iniFile, "Settings", "ReverseOrder")
-	IniWrite(BuyCapEdit, iniFile, "Settings", "BuyCap")
-	IniWrite(KeyDelayEdit, iniFile, "Settings", "KeyDelay")
-	IniWrite(MouseDelayEdit, iniFile, "Settings", "MouseDelay")
-	IniWrite(GlobalDelayEdit, iniFile, "Settings", "GlobalDelay")
-	IniWrite(AutoAlignCheck, iniFile, "Settings", "AutoAlign")
-	IniWrite(AutoAlignRecalEdit, iniFile, "Settings", "AutoAlignRecal")
-	IniWrite(ZoomLevelEdit, iniFile, "Settings", "ZoomLevel")
-	IniWrite(FailCountLimitEdit, iniFile, "Settings", "FailCountLimit")
-	IniWrite(MovementFactorEdit, iniFile, "Settings", "MovementFactor")
-	IniWrite(WrenchActiveCheck, iniFile, "Settings", "WrenchActive")
-	IniWrite(WrenchSlotEdit, iniFile, "Settings", "WrenchSlot")
-	IniWrite(UIInitModeCheck, iniFile, "Settings", "UIInitMode")
-	IniWrite(AltBuyCheck, iniFile, "Settings", "AltBuy")
-	IniWrite(SlowModeCheck, iniFile, "Settings", "SlowMode")
-	IniWrite(IgnoreErrorsCheck, iniFile, "Settings", "IgnoreErrors")
-	IniWrite(DebugModeCheck, iniFile, "Settings", "DebugMode")
-	IniWrite(InterfaceButtonEdit, iniFile, "Settings", "InterfaceButton")
-	
-	; === SEEDS ===
-	IniWrite(CarrotCheck, iniFile, "Seeds", "Carrot")
-	IniWrite(StrawberryCheck, iniFile, "Seeds", "Strawberry")
-	IniWrite(BlueberryCheck, iniFile, "Seeds", "Blueberry")
-	IniWrite(OrangeCheck, iniFile, "Seeds", "Orange")
-	IniWrite(TomatoCheck, iniFile, "Seeds", "Tomato")
-	IniWrite(CornCheck, iniFile, "Seeds", "Corn")
-	IniWrite(DaffodilCheck, iniFile, "Seeds", "Daffodil")
-	IniWrite(WatermelonCheck, iniFile, "Seeds", "Watermelon")
-	IniWrite(PumpkinCheck, iniFile, "Seeds", "Pumpkin")
-	IniWrite(AppleCheck, iniFile, "Seeds", "Apple")
-	IniWrite(BambooCheck, iniFile, "Seeds", "Bamboo")
-	IniWrite(CoconutCheck, iniFile, "Seeds", "Coconut")
-	IniWrite(CactusCheck, iniFile, "Seeds", "Cactus")
-	IniWrite(DragonCheck, iniFile, "Seeds", "Dragon")
-	IniWrite(MangoCheck, iniFile, "Seeds", "Mango")
-	IniWrite(GrapeCheck, iniFile, "Seeds", "Grape")
-	IniWrite(MushroomCheck, iniFile, "Seeds", "Mushroom")
-	IniWrite(PepperCheck, iniFile, "Seeds", "Pepper")
-	IniWrite(CacaoCheck, iniFile, "Seeds", "Cacao")
-	IniWrite(BeanstalkCheck, iniFile, "Seeds", "Beanstalk")
-	IniWrite(EmberLilyCheck, iniFile, "Seeds", "EmberLily")
-	IniWrite(SugarAppleCheck, iniFile, "Seeds", "SugarApple")
-	IniWrite(BurningBudCheck, iniFile, "Seeds", "BurningBud")
-	IniWrite(GiantPineconeCheck, iniFile, "Seeds", "GiantPinecone")
-	
-	
-	; === Summer Stuff  ===
-	IniWrite(CauliflowerCheck, iniFile, "SummerSeeds", "Cauliflower")
-	
-	IniWrite(RafflesiaCheck, iniFile, "SummerSeeds", "Rafflesia")
-	
-	IniWrite(GreenAppleCheck, iniFile, "SummerSeeds", "GreenApple")
-	
-	IniWrite(AvocadoCheck, iniFile, "SummerSeeds", "Avocado")
-	
-	IniWrite(BananaCheck, iniFile, "SummerSeeds", "Banana")
-	
-	IniWrite(PineappleCheck, iniFile, "SummerSeeds", "Pineapple")
-	
-	IniWrite(KiwiCheck, iniFile, "SummerSeeds", "Kiwi")
-	
-	IniWrite(BellPepperCheck, iniFile, "SummerSeeds", "BellPepper")
-	
-	IniWrite(PricklyPearCheck, iniFile, "SummerSeeds", "PricklyPear")
-	
-	IniWrite(LoquatCheck, iniFile, "SummerSeeds", "Loquat")
-	
-	IniWrite(FeijoaCheck, iniFile, "SummerSeeds", "Feijoa")
-	
-	IniWrite(PitcherCheck, iniFile, "SummerSeeds", "Pitcher")
-	; === GEAR ===
-	IniWrite(WateringCheck, iniFile, "Gear", "Watering")
-	IniWrite(TrowelCheck, iniFile, "Gear", "Trowel")
-	IniWrite(RecallCheck, iniFile, "Gear", "Recall")
-	IniWrite(BasicCheck, iniFile, "Gear", "Basic")
-	IniWrite(AdvancedCheck, iniFile, "Gear", "Advanced")
-	IniWrite(MediumToyCheck, iniFile, "Gear", "MediumToy")
-	IniWrite(MediumTreatCheck, iniFile, "Gear", "MediumTreat")
-	IniWrite(GodlyCheck, iniFile, "Gear", "Godly")
-	IniWrite(MagnifyCheck, iniFile, "Gear", "Magnify")
-	IniWrite(MirrorCheck, iniFile, "Gear", "Mirror")
-	IniWrite(MasterCheck, iniFile, "Gear", "Master")
-	IniWrite(CleansingCheck, iniFile, "Gear", "Cleansing")
-	IniWrite(FavoriteCheck, iniFile, "Gear", "Favorite")
-	IniWrite(HarvestCheck, iniFile, "Gear", "Harvest")
-	IniWrite(FriendshipCheck, iniFile, "Gear", "Friendship")
-	IniWrite(LevelupLollyCheck, iniFile, "Gear", "LevelupLolly")
-	; === TRAVELING ===
-	
-	IniWrite(SummerTravelActiveCheck, iniFile, "travel", "SummerTravelActive")
-	IniWrite(SkyActiveCheck, iniFile, "travel", "SkyActive")
-	IniWrite(SkyOpt1Check, iniFile, "travel", "SkyOpt1")
-	IniWrite(SkyOpt2Check, iniFile, "travel", "SkyOpt2")
-	IniWrite(SkyOpt3Check, iniFile, "travel", "SkyOpt3")
-	IniWrite(GnomeActiveCheck, iniFile, "travel", "GnomeActive")
-	IniWrite(GnomeOpt1Check, iniFile, "travel", "GnomeOpt1")
-	IniWrite(GnomeOpt2Check, iniFile, "travel", "GnomeOpt2")
-	IniWrite(GnomeOpt3Check, iniFile, "travel", "GnomeOpt3")
-	IniWrite(GnomeOpt4Check, iniFile, "travel", "GnomeOpt4")
-	IniWrite(HoneyActiveCheck, iniFile, "travel", "HoneyActive")
-	IniWrite(TravelFlowerSeedCheck, iniFile, "travel", "TravelFlowerSeed")
-	IniWrite(TravelHoneySprinklerCheck, iniFile, "travel", "TravelHoneySprinkler")
-	IniWrite(TravelBeeEggCheck, iniFile, "travel", "TravelBeeEgg")
-	IniWrite(TravelHoneyCrateCheck, iniFile, "travel", "TravelHoneyCrate")
-	IniWrite(TravelCrafterCrateCheck, iniFile, "travel", "TravelCrafterCrate")
-	; === CRAFTING ===
-	
-	IniWrite(CraftAOption, iniFile, "Crafting", "CraftTargetA")
-	IniWrite(CraftBOption, iniFile, "Crafting", "CraftTargetB")
-	IniWrite(CraftInstantCheck, iniFile, "Crafting", "CraftInstant")
-	IniWrite(MakeHoney, iniFile, "Crafting", "MakeHoney")
-	; === EVENTS ===
-	IniWrite(TwibloodCheck, iniFile, "Twiblood", "Twiblood")
-	IniWrite(ForceNightCheck, iniFile, "ForceEvent", "ForceNight")
-	IniWrite(ForceBeeCheck, iniFile, "ForceEvent", "ForceBee")
-	IniWrite(IgnoreWeatherCheck, iniFile, "IgnoreWeather", "IgnoreWeather")
-	IniWrite(BeeShopCheck, iniFile, "BeeShop", "BeeShop")
-	IniWrite(CraftSeedPackMode, iniFile, "EventMisc", "CraftSeedPackMode")
-	IniWrite(SellHoneyCheck, iniFile, "EventMisc", "SellHoney")
-	IniWrite(AltHoneyCheck, iniFile, "EventMisc", "AltHoney")
-	
-	IniWrite(ForcePrehistCheck, iniFile, "ForceEvent", "ForcePrehist")
-	IniWrite(PrehistShopCheck, iniFile, "PrehistShop", "PrehistShop")
-	IniWrite(PrehistCraftOption, iniFile, "PrehistShop", "PrehistCraftTarget")
-	IniWrite(DinoEggCheck, iniFile, "PrehistShop", "DinoEgg")
-	IniWrite(DinoPetEdit, iniFile, "PrehistShop", "DinoPet")
-	IniWrite(PrehistInstantCraftCheck, iniFile, "PrehistShop", "PrehistInstantCraft")
-	
-	IniWrite(ForceSummerCheck, iniFile, "ForceEvent", "ForceSummer")
-	IniWrite(SummerShopCheck, iniFile, "SumShop", "SummerShop")
-	IniWrite(SummerSeedCheck, iniFile, "SumShop", "SummerSeed")
-	IniWrite(DelphiniumCheck, iniFile, "SumShop", "Delphinium")
-	IniWrite(LilyValleyCheck, iniFile, "SumShop", "LilyValley")
-	IniWrite(TravelerCheck, iniFile, "SumShop", "Traveler")
-	IniWrite(SprayBurntCheck, iniFile, "SumShop", "SprayBurnt")
-	IniWrite(OasisCrateCheck, iniFile, "SumShop", "OasisCrate")
-	IniWrite(OasisEggCheck, iniFile, "SumShop", "OasisEgg")
-	IniWrite(HamsterCheck, iniFile, "SumShop", "Hamster")
-	
-	IniWrite(TimerAdjustmentInput, iniFile, "TimerAdjustment", "TimerAdjustment")
-	
-	; === Twilight/Blood Items ===
-	IniWrite(BloodCrateCheck, iniFile, "Twiblood", "BloodCrate")
-	IniWrite(TwilightCrateCheck, iniFile, "Twiblood", "TwilightCrate")
-	IniWrite(NightEggCheck, iniFile, "Twiblood", "NightEgg")
-	IniWrite(NightSeedCheck, iniFile, "Twiblood", "NightSeed")
-	IniWrite(StarCallerCheck, iniFile, "Twiblood", "StarCaller")
-	IniWrite(MoonMelonCheck, iniFile, "Twiblood", "MoonMelon")
-	IniWrite(BloodBananaCheck, iniFile, "Twiblood", "BloodBanana")
-	IniWrite(MoonMangoCheck, iniFile, "Twiblood", "MoonMango")
-	IniWrite(CelestiberryCheck, iniFile, "Twiblood", "Celestiberry")
-	IniWrite(MoonCatCheck, iniFile, "Twiblood", "MoonCat")
-	IniWrite(BloodHedgeCheck, iniFile, "Twiblood", "BloodHedge")
-	IniWrite(BloodKiwiCheck, iniFile, "Twiblood", "BloodKiwi")
-	IniWrite(BloodOwlCheck, iniFile, "Twiblood", "BloodOwl")
-	
-	
-	; === Bee Items ===
-	IniWrite(FlowerSeedCheck, iniFile, "BeeShop", "FlowerSeed")
-	IniWrite(LavenderCheck, iniFile, "BeeShop", "Lavender")
-	IniWrite(NectarshadeCheck, iniFile, "BeeShop", "Nectarshade")
-	IniWrite(NectarineCheck, iniFile, "BeeShop", "Nectarine")
-	IniWrite(HiveFruitCheck, iniFile, "BeeShop", "HiveFruit")
-	IniWrite(PollenGunCheck, iniFile, "BeeShop", "PollenGun")
-	IniWrite(NectarStaffCheck, iniFile, "BeeShop", "NectarStaff")
-	IniWrite(HoneySprinklerCheck, iniFile, "BeeShop", "HoneySprinkler")
-	IniWrite(BeeEggCheck, iniFile, "BeeShop", "BeeEgg")
-	IniWrite(BeeCrateCheck, iniFile, "BeeShop", "BeeCrate")
-	IniWrite(HoneyCombCheck, iniFile, "BeeShop", "HoneyComb")
-	IniWrite(BeeChairCheck, iniFile, "BeeShop", "BeeChair")
-	IniWrite(HoneyTorchCheck, iniFile, "BeeShop", "HoneyTorch")
-	IniWrite(HoneyWalkwayCheck, iniFile, "BeeShop", "HoneyWalkway")
-	
-	; === Eggs ===
-	IniWrite(BuyAllEggsCheck, iniFile, "Eggs", "BuyAllEggs")
-	IniWrite(CommonEggCheck, iniFile, "Eggs", "CommonEgg")
-	IniWrite(UncommonEggCheck, iniFile, "Eggs", "UncommonEgg")
-	IniWrite(RareEggCheck, iniFile, "Eggs", "RareEgg")
-	IniWrite(LegEggCheck, iniFile, "Eggs", "LegEgg")
-	IniWrite(MythEggCheck, iniFile, "Eggs", "MythEgg")
-	IniWrite(BugEggCheck, iniFile, "Eggs", "BugEgg")
-	IniWrite(BeeEggEggCheck, iniFile, "Eggs", "BeeEgg")
-	IniWrite(SummerCommonEggCheck, iniFile, "Eggs", "SummerCommonEgg")
-	IniWrite(SummerRareEggCheck, iniFile, "Eggs", "SummerRareEgg")
-	IniWrite(ParadiseEggCheck, iniFile, "Eggs", "ParadiseEgg")
-	
-	; === GEAR/Seeds ===
-	IniWrite(GearsCheck, iniFile, "Gears/Seeds", "Gears")
-	IniWrite(SeedsCheck, iniFile, "Gears/Seeds", "Seeds")
+	SettingCategoryList := ["Settings","Crafting","PrehistShop","TimerAdjustment"]
+	ListList := [SettingsList, CraftingList, PrehistShopList,  TimerAdjustmentList]
+	for k, SettingCategory in SettingCategoryList {
+		for ka, SettingName in ListList[k] {
+			SettingNameTemp := StrReplace(StrReplace(StrReplace(StrReplace(SettingName,"Edit"),"Check"),"Option"),"Input")
+			IniWrite(SaveData[SettingName], iniFile, SettingCategory, SettingNameTemp)
+		}
+	}
+	; === SIMPLE ===
+	SettingCategoryList := ["Seeds","SummerSeeds","Gear","travel","ForceEvent","Twiblood","BeeShop","SumShop","IgnoreWeather","Eggs","Gears/Seeds","ZenShop"]
+	ListList := [SeedList, SummerSeedList, GearList, TravelList, ForceEventList, TwibloodList, BeeShopList, SumShopList, IgnoreWeatherList, EggsList, GearsSeedsList, ZenList]
+	for k, SettingCategory in SettingCategoryList {
+		for ka, SettingName in ListList[k] {
+			SettingName := StrReplace(SettingName," ")
+			SettingNameTemp := SettingName . "Check"
+			IniWrite(SaveData[SettingNameTemp], iniFile, SettingCategory, SettingName)
+		}
+	}
 	return
 }
 ; === Close Script ===
@@ -1021,34 +697,9 @@ SeedPage(SeedPageNr){
 	Switch SeedPageNr {
 		case 1:
 		;always active
-		GUIObjCarrotCheck.Visible := 1
-		GUIObjStrawberryCheck.Visible := 1
-		GUIObjBlueberryCheck.Visible := 1
-		GUIObjTomatoCheck.Visible := 1
-		GUIObjWatermelonCheck.Visible := 1
 		GUIObjSeedsBox.Visible := 1
 		GUIObjGearsBox.Visible := 1
-		GUIObjSugarAppleCheck.Visible := 1
-		GUIObjWateringCheck.Visible := 1
-		GUIObjTrowelCheck.Visible := 1
-		GUIObjRecallCheck.Visible := 1
-		GUIObjBasicCheck.Visible := 1
-		GUIObjAdvancedCheck.Visible := 1
-		GUIObjMediumToyCheck.Visible := 1
-		GUIObjMediumTreatCheck.Visible := 1
-		GUIObjGodlyCheck.Visible := 1
-		GUIObjMagnifyCheck.Visible := 1
-		GUIObjMasterCheck.Visible := 1
-		GUIObjCleansingCheck.Visible := 1
-		GUIObjFavoriteCheck.Visible := 1
-		GUIObjHarvestCheck.Visible := 1
-		GUIObjFriendshipCheck.Visible := 1
-		GUIObjLevelupLollyCheck.Visible := 1
-		GUIObjMirrorCheck.Visible := 1
 		
-		GUIObjTomatoCheck.Move(,240)
-		GUIObjWatermelonCheck.Move(,280)
-		GUIObjSugarAppleCheck.Move(,280)
 		GUIObjCauliflowerCheck.Visible := 1
 		GUIObjRafflesiaCheck.Visible := 1
 		GUIObjGreenAppleCheck.Visible := 1
@@ -1061,9 +712,7 @@ SeedPage(SeedPageNr){
 		GUIObjLoquatCheck.Visible := 1
 		GUIObjFeijoaCheck.Visible := 1
 		GUIObjPitcherCheck.Visible := 1
-		SeedCurrentPage := 1
-		case 2:
-		;always active
+		
 		GUIObjCarrotCheck.Visible := 1
 		GUIObjStrawberryCheck.Visible := 1
 		GUIObjBlueberryCheck.Visible := 1
@@ -1072,23 +721,6 @@ SeedPage(SeedPageNr){
 		GUIObjSeedsBox.Visible := 1
 		GUIObjGearsBox.Visible := 1
 		GUIObjSugarAppleCheck.Visible := 1
-		GUIObjWateringCheck.Visible := 1
-		GUIObjTrowelCheck.Visible := 1
-		GUIObjRecallCheck.Visible := 1
-		GUIObjBasicCheck.Visible := 1
-		GUIObjAdvancedCheck.Visible := 1
-		GUIObjMediumToyCheck.Visible := 1
-		GUIObjMediumTreatCheck.Visible := 1
-		GUIObjGodlyCheck.Visible := 1
-		GUIObjMagnifyCheck.Visible := 1
-		GUIObjMasterCheck.Visible := 1
-		GUIObjCleansingCheck.Visible := 1
-		GUIObjFavoriteCheck.Visible := 1
-		GUIObjHarvestCheck.Visible := 1
-		GUIObjFriendshipCheck.Visible := 1
-		GUIObjLevelupLollyCheck.Visible := 1
-		GUIObjMirrorCheck.Visible := 1
-		
 		GUIObjOrangeCheck.Visible := 1
 		GUIObjCornCheck.Visible := 1
 		GUIObjDaffodilCheck.Visible := 1
@@ -1107,9 +739,49 @@ SeedPage(SeedPageNr){
 		GUIObjEmberLilyCheck.Visible := 1
 		GUIObjBurningBudCheck.Visible := 1
 		GUIObjGiantPineconeCheck.Visible := 1
-		GUIObjTomatoCheck.Move(,260)
-		GUIObjWatermelonCheck.Move(,320)
-		GUIObjSugarAppleCheck.Move(,360)
+		SeedCurrentPage := 1
+		case 2:
+		;always active
+		GUIObjCarrotCheck.Visible := 1
+		GUIObjStrawberryCheck.Visible := 1
+		GUIObjBlueberryCheck.Visible := 1
+		GUIObjTomatoCheck.Visible := 1
+		GUIObjWatermelonCheck.Visible := 1
+		GUIObjSeedsBox.Visible := 1
+		GUIObjGearsBox.Visible := 1
+		GUIObjSugarAppleCheck.Visible := 1
+		GUIObjOrangeCheck.Visible := 1
+		GUIObjCornCheck.Visible := 1
+		GUIObjDaffodilCheck.Visible := 1
+		GUIObjPumpkinCheck.Visible := 1
+		GUIObjAppleCheck.Visible := 1
+		GUIObjBambooCheck.Visible := 1
+		GUIObjCoconutCheck.Visible := 1
+		GUIObjCactusCheck.Visible := 1
+		GUIObjDragonCheck.Visible := 1
+		GUIObjMangoCheck.Visible := 1
+		GUIObjGrapeCheck.Visible := 1
+		GUIObjMushroomCheck.Visible := 1
+		GUIObjPepperCheck.Visible := 1
+		GUIObjCacaoCheck.Visible := 1
+		GUIObjBeanstalkCheck.Visible := 1
+		GUIObjEmberLilyCheck.Visible := 1
+		GUIObjBurningBudCheck.Visible := 1
+		GUIObjGiantPineconeCheck.Visible := 1
+		
+		GUIObjCauliflowerCheck.Visible := 1
+		GUIObjRafflesiaCheck.Visible := 1
+		GUIObjGreenAppleCheck.Visible := 1
+		GUIObjAvocadoCheck.Visible := 1
+		GUIObjBananaCheck.Visible := 1
+		GUIObjPineappleCheck.Visible := 1
+		GUIObjKiwiCheck.Visible := 1
+		GUIObjBellPepperCheck.Visible := 1
+		GUIObjPricklyPearCheck.Visible := 1
+		GUIObjLoquatCheck.Visible := 1
+		GUIObjFeijoaCheck.Visible := 1
+		GUIObjPitcherCheck.Visible := 1
+		
 		SeedCurrentPage := 2
 		default:
 	}
@@ -1120,7 +792,15 @@ EventPage(EventPageNr){
 	
 	Switch EventPageNr {
 		case 1:
-		;page 1 (Summer and Prehistoric)
+		;page 1 (Zen and Galactic)
+		GUIObjZenBox.Visible := 1
+		GUIObjForceZenCheck.Visible := 1
+		for k, GUIName in GUIObjZenEventShop {
+			GUIName.Visible := 1
+		}
+		
+		case 2:
+		;page 2 (Summer and Prehistoric)
 		GUIObjForcePrehistCheck.Visible := 1
 		GUIObjPrehistShopCheck.Visible := 1
 		GUIObjPrehistCraftOption.Visible := 1
@@ -1142,57 +822,8 @@ EventPage(EventPageNr){
 		GUIObjOasisEggCheck.Visible := 1
 		GUIObjHamsterCheck.Visible := 1
 		GUIObjSumBox.Visible := 1
-		;page 2 (Bee and twilight)
-		GUIObjForceNightCheck.Visible := 0
-		GUIObjForceBeeCheck.Visible := 0
-		GUIObjTwibloodCheck.Visible := 0
-		GUIObjBloodCrateCheck.Visible := 0
-		GUIObjTwilightCrateCheck.Visible := 0
-		GUIObjNightEggCheck.Visible := 0
-		GUIObjNightSeedCheck.Visible := 0
-		GUIObjStarCallerCheck.Visible := 0
-		GUIObjMoonMelonCheck.Visible := 0
-		GUIObjBloodBananaCheck.Visible := 0
-		GUIObjMoonMangoCheck.Visible := 0
-		GUIObjCelestiberryCheck.Visible := 0
-		GUIObjMoonCatCheck.Visible := 0
-		GUIObjBloodHedgeCheck.Visible := 0
-		GUIObjBloodKiwiCheck.Visible := 0
-		GUIObjBloodOwlCheck.Visible := 0
-		GUIObjBeeShopCheck.Visible := 0
-		GUIObjFlowerSeedCheck.Visible := 0
-		GUIObjLavenderCheck.Visible := 0
-		GUIObjNectarshadeCheck.Visible := 0
-		GUIObjNectarineCheck.Visible := 0
-		GUIObjHiveFruitCheck.Visible := 0
-		GUIObjPollenGunCheck.Visible := 0
-		GUIObjNectarStaffCheck.Visible := 0
-		GUIObjHoneySprinklerCheck.Visible := 0
-		GUIObjBeeEggCheck.Visible := 0
-		GUIObjBeeCrateCheck.Visible := 0
-		GUIObjHoneyCombCheck.Visible := 0
-		GUIObjBeeChairCheck.Visible := 0
-		GUIObjHoneyTorchCheck.Visible := 0
-		GUIObjHoneyWalkwayCheck.Visible := 0
-		GUIObjCraftSeedPackModeCheck.Visible := 0
-		GUIObjSellHoneyCheck.Visible := 0
-		GUIObjAltHoneyCheck.Visible := 0
-		GUIObjBeeBox.Visible := 0
-		GUIObjTwiBloodBox.Visible := 0
-		EventCurrentPage := 1
-		case 2:
-		;page 1 (Summer and Prehistoric)
-		GUIObjForceSummerCheck.Visible := 0
-		GUIObjSummerShopCheck.Visible := 0
-		GUIObjSummerSeedCheck.Visible := 0
-		GUIObjDelphiniumCheck.Visible := 0
-		GUIObjLilyValleyCheck.Visible := 0
-		GUIObjTravelerCheck.Visible := 0
-		GUIObjSprayBurntCheck.Visible := 0
-		GUIObjOasisCrateCheck.Visible := 0
-		GUIObjOasisEggCheck.Visible := 0
-		GUIObjHamsterCheck.Visible := 0
-		GUIObjSumBox.Visible := 0
+		EventCurrentPage := 2
+		case 1:
 		;page 2 (Bee and twilight)
 		GUIObjForceNightCheck.Visible := 1
 		GUIObjForceBeeCheck.Visible := 1
@@ -1225,12 +856,9 @@ EventPage(EventPageNr){
 		GUIObjBeeChairCheck.Visible := 1
 		GUIObjHoneyTorchCheck.Visible := 1
 		GUIObjHoneyWalkwayCheck.Visible := 1
-		GUIObjCraftSeedPackModeCheck.Visible := 1
-		GUIObjSellHoneyCheck.Visible := 1
-		GUIObjAltHoneyCheck.Visible := 1
 		GUIObjBeeBox.Visible := 1
 		GUIObjTwiBloodBox.Visible := 1
-		EventCurrentPage := 2
+		EventCurrentPage := 3
 		
 		default:
 		
@@ -1249,22 +877,6 @@ HideAllSeedGear(*)
 	GUIObjSeedsBox.Visible := 0
 	GUIObjGearsBox.Visible := 0
 	GUIObjSugarAppleCheck.Visible := 0
-	GUIObjWateringCheck.Visible := 0
-	GUIObjTrowelCheck.Visible := 0
-	GUIObjRecallCheck.Visible := 0
-	GUIObjBasicCheck.Visible := 0
-	GUIObjAdvancedCheck.Visible := 0
-	GUIObjMediumToyCheck.Visible := 0
-	GUIObjMediumTreatCheck.Visible := 0
-	GUIObjGodlyCheck.Visible := 0
-	GUIObjMirrorCheck.Visible := 0
-	GUIObjMagnifyCheck.Visible := 0
-	GUIObjMasterCheck.Visible := 0
-	GUIObjCleansingCheck.Visible := 0
-	GUIObjFavoriteCheck.Visible := 0
-	GUIObjHarvestCheck.Visible := 0
-	GUIObjFriendshipCheck.Visible := 0
-	GUIObjLevelupLollyCheck.Visible := 0
 	;summer plants (pg 1)
 	GUIObjCauliflowerCheck.Visible := 0
 	GUIObjRafflesiaCheck.Visible := 0
@@ -1301,6 +913,12 @@ HideAllSeedGear(*)
 HideAllEvent(*)
 {
 	global
+	GUIObjZenBox.Visible := 0
+	GUIObjForceZenCheck.Visible := 0
+	for k, GUIName in GUIObjZenEventShop {
+		GUIName.Visible := 0
+	}
+	
 	;page 1 (Summer and Prehistoric)
 	GUIObjForcePrehistCheck.Visible := 0
 	GUIObjPrehistShopCheck.Visible := 0
@@ -1355,9 +973,6 @@ HideAllEvent(*)
 	GUIObjBeeChairCheck.Visible := 0
 	GUIObjHoneyTorchCheck.Visible := 0
 	GUIObjHoneyWalkwayCheck.Visible := 0
-	GUIObjCraftSeedPackModeCheck.Visible := 0
-	GUIObjSellHoneyCheck.Visible := 0
-	GUIObjAltHoneyCheck.Visible := 0
 	GUIObjBeeBox.Visible := 0
 	GUIObjTwiBloodBox.Visible := 0
 }
@@ -1422,7 +1037,7 @@ EnableSpecialTab(MainPage, *)
 			GUIObjCraftInfoText.Visible := 0
 			GUIObjCraftBox.Visible := 0
 			GUIObjCraftInstantCheck.Visible := 0
-			GUIObjMakeHoney.Visible := 0
+			GUIObjMakeHoneyCheck.Visible := 0
 			EventPage(EventCurrentPage)
 			GUIObjIgnoreWeatherCheck.Visible := 1
 			CraftEnabled := 0
@@ -1435,7 +1050,7 @@ EnableSpecialTab(MainPage, *)
 			GUIObjCraftInfoText.Visible := 1
 			GUIObjCraftBox.Visible := 1
 			GUIObjCraftInstantCheck.Visible := 1
-			GUIObjMakeHoney.Visible := 1
+			GUIObjMakeHoneyCheck.Visible := 1
 			HideAllEvent()
 			GUIObjIgnoreWeatherCheck.Visible := 0
 			CraftEnabled := 1
@@ -1535,6 +1150,7 @@ SettingsMenuSwap(SettingsCategory, *)
 		GUIObjWrenchActiveCheck.Visible := 1
 		GUIObjWrenchSlotEdit.Visible := 1
 		GUIObjFailCountLimitText.Visible := 1
+		GUIObjClassicShopInitCheck.Visible := 1
 		GUIObjFailCountLimitEdit.Visible := 1
 		GUIObjBackButton.Visible := 1
 		case 4:
@@ -1584,5 +1200,6 @@ HideAllSettings(*)
 	GUIObjMovementFactorEdit.Visible := 0
 	GUIObjFailCountLimitText.Visible := 0
 	GUIObjFailCountLimitEdit.Visible := 0
+	GUIObjClassicShopInitCheck.Visible := 0
 	GUIObjUIInitModeCheck.Visible := 0
 }
