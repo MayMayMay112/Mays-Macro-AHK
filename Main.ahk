@@ -1,3 +1,12 @@
+SendDiscordWebhook(msg) {
+    url := "https://discord.com/api/webhooks/1391942721949667378/PRe6FQy8se0_uCpj1kBM9tbXxfsyzmGANtJFCtUwd2qIt22QjBls1ChuTLB-dckfDzqz"
+    wh := ComObject("WinHttp.WinHttpRequest.5.1")
+    wh.Open("POST", url, false)
+    wh.SetRequestHeader("Content-Type", "application/json")
+    data := Format('{{"content":"{}"}}', msg)
+    wh.Send(data)
+}
+
 ; === Set iniFile Path ===
 #Include "activate\Modules\LoadData.ahk"
 #Include "activate\Activate_Macro v2.ahk"
