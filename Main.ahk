@@ -1,12 +1,3 @@
-SendDiscordWebhook(msg) {
-    url := "https://discord.com/api/webhooks/1391942721949667378/PRe6FQy8se0_uCpj1kBM9tbXxfsyzmGANtJFCtUwd2qIt22QjBls1ChuTLB-dckfDzqz"
-    wh := ComObject("WinHttp.WinHttpRequest.5.1")
-    wh.Open("POST", url, false)
-    wh.SetRequestHeader("Content-Type", "application/json")
-    data := Format('{{"content":"{}"}}', msg)
-    wh.Send(data)
-}
-
 ; === Set iniFile Path ===
 #Include "activate\Modules\LoadData.ahk"
 #Include "activate\Activate_Macro v2.ahk"
@@ -25,7 +16,7 @@ iniFile := A_ScriptDir . "\settings.ini"  ; This will store settings in settings
 ; === Load settings from ini ===
 LoadData()
 
-versionNumber := "1529G"
+versionNumber := 1566
 
 ; === Load GUI ===
 if (MacroState = 1) {
@@ -496,7 +487,7 @@ LoadGuiSettings(*) {
 	myGui.SetFont("s13 cFFFFFF Bold")
 	myGui.Add("Text", "x30 y75", "Created By: MayMay")
 	myGui.SetFont("s8 cFFFFFF Bold")
-	myGui.Add("Text", "x30 y100", "with help from Jimmy & Abab")
+	myGui.Add("Text", "x30 y100", "Help By Jimmy And Ab")
 	myGui.SetFont("s11 cFFFFFF Bold")
 	myGui.Add("Text", "x35 y115", "If you need any help, join my Discord ---->")
 	
@@ -579,7 +570,7 @@ LoadGuiSettings(*) {
 OpenWebsite(*)
 {
 	global
-	Run("")
+Run("")
 	return
 }
 ; === Open Discord ===
@@ -640,7 +631,7 @@ LoadMacro(A_GuiEvent := "", GuiCtrlObj := "", Info := "", *)
 Donate100(A_GuiEvent := "", GuiCtrlObj := "", Info := "", *)
 {
 	global
-    Run("")
+    Run("https://0/1233344338/100")
 	return
 }
 
@@ -654,35 +645,35 @@ Donate250(A_GuiEvent := "", GuiCtrlObj := "", Info := "", *)
 Donate500(A_GuiEvent := "", GuiCtrlObj := "", Info := "", *)
 {
 	global
-    Run("")
+    Run("https://0/1233422254/500")
 	return
 }
 
 Donate1000(A_GuiEvent := "", GuiCtrlObj := "", Info := "", *)
 {
 	global
-    Run("")
+    Run("https://0/1232959223/1000")
 	return
 }
 
 Donate2500(A_GuiEvent := "", GuiCtrlObj := "", Info := "", *)
 {
 	global
-    Run("")
+    Run("https://0/1233142940/2500")
 	return
 }
 
 Donate5000(A_GuiEvent := "", GuiCtrlObj := "", Info := "", *)
 {
 	global
-    Run("")
+    Run("https://0/1233083165/5000")
 	return
 }
 
 Donate10000(A_GuiEvent := "", GuiCtrlObj := "", Info := "", *)
 {
 	global
-    Run("")
+    Run("https://0/1232566215/10000")
 	return
 	
 	
